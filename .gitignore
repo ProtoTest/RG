@@ -8,12 +8,10 @@
 *.sln.docstates
 
 # Build results
-
-[Dd]ebug/
+Golem.PageObjects.RG/
 [Rr]elease/
 x64/
 build/
-[Bb]in/
 [Oo]bj/
 
 # MSTest test Results
