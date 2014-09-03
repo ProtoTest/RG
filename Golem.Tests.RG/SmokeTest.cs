@@ -20,5 +20,11 @@ namespace Golem.Tests.RG
             HomePage.OpenHomePage();
         }
 
+        [Test, Category("Smoke Test")]
+        public void LoginWithExistingUser()
+        {
+            HomePage.OpenHomePage();
+        }
+
     }
 }

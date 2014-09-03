@@ -16,18 +16,36 @@ namespace Golem.PageObjects.RG
 {
     public class HomePage : BasePageObject
     {
-        //LoggedOutHeader loggedOutHeader = new LoggedOutHeader();
+        LoggedOutHeader LoggedOutHeader = new LoggedOutHeader();
         //LoggedInHeader loggedInHeader = new LoggedInHeader();
-        Element RG_Logo = new Element("RG LOGO", By.ClassName("logo"));
-        public static HomePage OpenHomePage()
+        Footer Footer = new Footer();
+
+        Element FeaturedProduct = new Element("Featured Product", By.ClassName("product"));
+        FeaturedProductInfo FeatureProductInfoArea = new FeaturedProductInfo();
+
+        public HomePage(bool LoggedIn = false)
+        {
+            if (LoggedIn)
+            {
+                //LoggedInHeader.WaitForElements();
+            }
+            else
+            {
+                LoggedOutHeader.WaitForElements();
+            }
+        }
+
+        public static HomePage OpenHomePage(bool LoggedIn = false)
         {
             WebDriverTestBase.driver.Navigate().GoToUrl(Config.GetConfigValue("EnvUrl", "http://revolutiongolf-integration-2014.bluemod.us/"));
-            return new HomePage();
+            return new HomePage(LoggedIn);
         }
+
 
         public override void WaitForElements()
         {
-            RG_Logo.WaitUntil().Visible();
+            FeaturedProduct.WaitUntil().Visible();
+            Footer.WaitForElements();
         }
     }
 }

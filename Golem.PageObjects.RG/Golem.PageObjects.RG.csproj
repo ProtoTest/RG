@@ -84,7 +84,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FeaturedProductInfo.cs" />
+    <Compile Include="Footer.cs" />
+    <Compile Include="HeaderBase.cs" />
     <Compile Include="HomePage.cs" />
+    <Compile Include="LoggedOutHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
