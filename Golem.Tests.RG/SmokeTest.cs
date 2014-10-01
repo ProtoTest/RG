@@ -23,7 +23,7 @@ namespace Golem.Tests.RG
         [Test, Category("Smoke Test")]
         public void LoginWithExistingUser()
         {
-            HomePage.OpenHomePage();
+            HomePage.OpenHomePage().GotoLoginJoinPage();
         }
 
     }

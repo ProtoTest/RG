@@ -16,35 +16,48 @@ namespace Golem.PageObjects.RG
 {
     public class HomePage : BasePageObject
     {
-        LoggedOutHeader LoggedOutHeader = new LoggedOutHeader();
-        //LoggedInHeader loggedInHeader = new LoggedInHeader();
+        public static bool LoggedIn = false;
+        LoggedOutHeader LoggedOutHeader = null;
+        LoggedInHeader LoggedInHeader = null;
         Footer Footer = new Footer();
 
         Element FeaturedProduct = new Element("Featured Product", By.ClassName("product"));
-        FeaturedProductInfo FeatureProductInfoArea = new FeaturedProductInfo();
+        // Not on page currently //FeaturedProductInfo FeatureProductInfoArea = new FeaturedProductInfo();
 
-        public HomePage(bool LoggedIn = false)
+        public HomePage()
         {
             if (LoggedIn)
             {
-                //LoggedInHeader.WaitForElements();
+                LoggedInHeader = new LoggedInHeader();
             }
             else
             {
-                LoggedOutHeader.WaitForElements();
+                LoggedOutHeader = new LoggedOutHeader();
             }
         }
 
-        public static HomePage OpenHomePage(bool LoggedIn = false)
+        public static HomePage OpenHomePage()
         {
             WebDriverTestBase.driver.Navigate().GoToUrl(Config.GetConfigValue("EnvUrl", "http://revolutiongolf-integration-2014.bluemod.us/"));
-            return new HomePage(LoggedIn);
+            return new HomePage();
+        }
+
+        public LoginJoinPage GotoLoginJoinPage()
+        {
+            if (!LoggedIn)
+            {
+                return LoggedOutHeader.GotoLoginJoinPage();
+            }
+            else
+            {
+                throw new Exception("Trying to login, when state appears to already be logged in");
+            }
         }
 
 
         public override void WaitForElements()
         {
-            FeaturedProduct.WaitUntil().Visible();
+            // Not currently on page // FeaturedProduct.WaitUntil().Visible();
             Footer.WaitForElements();
         }
     }
