@@ -19,9 +19,8 @@ namespace Golem.PageObjects.RG
         public static bool LoggedIn = false;
         LoggedOutHeader LoggedOutHeader = null;
         LoggedInHeader LoggedInHeader = null;
-        Footer Footer = new Footer();
 
-        Element FeaturedProduct = new Element("Featured Product", By.ClassName("product"));
+        //Element FeaturedProduct = new Element("Featured Product", By.ClassName("product"));
         // Not on page currently //FeaturedProductInfo FeatureProductInfoArea = new FeaturedProductInfo();
 
         public HomePage()
@@ -58,7 +57,7 @@ namespace Golem.PageObjects.RG
         public override void WaitForElements()
         {
             // Not currently on page // FeaturedProduct.WaitUntil().Visible();
-            Footer.WaitForElements();
+
         }
     }
 }

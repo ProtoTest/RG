@@ -21,6 +21,7 @@ namespace Golem.Tests.RG
         }
 
         [Test, Category("Smoke Test")]
+        [DependsOn("VerifyApplicationUp")]
         public void LoginWithExistingUser()
         {
             HomePage.OpenHomePage().GotoLoginJoinPage();
