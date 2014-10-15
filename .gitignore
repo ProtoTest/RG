@@ -8,7 +8,6 @@
 *.sln.docstates
 
 # Build results
-Golem.PageObjects.RG/
 [Rr]elease/
 x64/
 build/
