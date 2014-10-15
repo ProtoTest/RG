@@ -16,15 +16,19 @@ namespace Golem.PageObjects.RG
 {
     public class HomePage : BasePageObject
     {
-        public static bool LoggedIn = false;
-        LoggedOutHeader LoggedOutHeader = null;
-        LoggedInHeader LoggedInHeader = null;
+        private static bool logged_in = false;
+        public bool LoggedIn { get {return logged_in;} }
+
+        public LoggedOutHeader LoggedOutHeader = null;
+        public LoggedInHeader LoggedInHeader = null;
 
         //Element FeaturedProduct = new Element("Featured Product", By.ClassName("product"));
         // Not on page currently //FeaturedProductInfo FeatureProductInfoArea = new FeaturedProductInfo();
 
-        public HomePage()
+        public HomePage(bool LoggedIn=false)
         {
+            logged_in = LoggedIn;
+
             if (LoggedIn)
             {
                 LoggedInHeader = new LoggedInHeader();
@@ -49,7 +53,19 @@ namespace Golem.PageObjects.RG
             }
             else
             {
-                throw new Exception("Trying to login, when state appears to already be logged in");
+                throw new Exception("Trying to join, when application state appears to already be logged in");
+            }
+        }
+
+        public JoinPage GotoJoinPage()
+        {
+            if (!LoggedIn)
+            {
+                return LoggedOutHeader.GotoJoinPage();
+            }
+            else
+            {
+                throw new Exception("Trying to login/join, when application state appears to already be logged in");
             }
         }
 
