@@ -17,10 +17,10 @@ namespace Golem.PageObjects.RG
     public class HeaderBase : BasePageObject
     {
         Element RG_Logo = new Element("RG LOGO", By.ClassName("logo"));
-        Element Instruction = new Element("Instruction Hover", By.XPath("//a[text()='Instruction']"));
-        Element Shop = new Element("Shop Link", By.XPath("//a[text()='Shop']"));
-        Element RG = new Element("@RG Hover", By.XPath("//a[text()='@RG']"));
-        Element RG_Live = new Element("RG Live Hover", By.XPath("//a[text()='RG Live']"));
+        Element Instruction = new Element("Instruction Hover", By.XPath("//nav//a[contains(text(),'Instruction')]"));
+        Element Shop = new Element("Shop Link", By.XPath("//nav//a[contains(text(),'Shop')]"));
+        Element RG = new Element("@RG Hover", By.XPath("//nav//a[contains(text(),'@RG')]"));
+        Element RG_Live = new Element("RG Live Hover", By.XPath("//nav//a[contains(text(),'RG Live')]"));
         Element OnAir = new Element("On Air?", By.ClassName("nav-onair"));
         Element Search = new Element("Search Link", By.XPath("//*[text()='Search']"));
 
