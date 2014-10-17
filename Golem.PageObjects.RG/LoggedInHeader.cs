@@ -44,14 +44,14 @@ namespace Golem.PageObjects.RG
             YourProfile_Link.WaitUntil().Visible().Click();
             return new YourProfilePage();
         }
-
+        */
         public AccountPage EnterYourAccount()
         {
             UserAccount_Link.Click();
             Account_Link.WaitUntil().Visible().Click();
             return new AccountPage();
         }
-        */
+
         public HomePage LogOut()
         {
             UserAccount_Link.Click();

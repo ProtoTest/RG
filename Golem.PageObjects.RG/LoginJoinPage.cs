@@ -27,7 +27,7 @@ namespace Golem.PageObjects.RG
             CreateAccountEmail_Field.Text = email;
             CreateAccountPassword_Field.Text = password;
             CreateAccount_Button.Click();
-            
+
             return new HomePage(true);
         }
 

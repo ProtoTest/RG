@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountPage.cs" />
     <Compile Include="FeaturedProductInfo.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="HeaderBase.cs" />

@@ -12,13 +12,13 @@ using OpenQA.Selenium;
 namespace Golem.Tests.RG
 {
     [TestFixture]
-    public class SmokeTest : WebDriverTestBase
+    public class UserTests : WebDriverTestBase
     {
-        private string login_join_account_email = "prototest_" + Common.GetRandomString() + "_1@mailinator.com";
-        private string subscribe_account_email = "prototest_" + Common.GetRandomString() + "_2@mailinator.com";
-        private string account_password = Config.GetConfigValue("Password", "prototest123");
+        public static string login_join_account_email = "prototest_" + Common.GetRandomString() + "_1@mailinator.com";
+        public static string subscribe_account_email = "prototest_" + Common.GetRandomString() + "_2@mailinator.com";
+        public static string account_password = Config.GetConfigValue("Password", "prototest123");
 
-        [Test, Category("Smoke Test")]
+        [Test, Category("User Test")]
         public void VerifyApplicationUp()
         {
             HomePage.OpenHomePage().
@@ -27,16 +27,19 @@ namespace Golem.Tests.RG
                       account_password).LoggedInHeader.LogOut();
         }
 
-        [Test, Category("Smoke Test")]
+        [Test, Category("User Test")]
         [DependsOn("VerifyApplicationUp")]
         public void CreateUserFromLoginPage()
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 CreateAccount(login_join_account_email, account_password);
+
+            // Update the test configuration for the new user created
+            Config.UpdateConfigFile("UserUnderTest", login_join_account_email);
         }
 
-        [Test, Category("Smoke Test")]
+        [Test, Category("User Test")]
         [DependsOn("VerifyApplicationUp")]
         public void SubscribeNewUser()
         {
@@ -47,7 +50,6 @@ namespace Golem.Tests.RG
                           JoinPage.SCORE.Scratch,
                           subscribe_account_email, 
                           account_password).LoggedInHeader.LogOut();
-         
         }
 
     }
