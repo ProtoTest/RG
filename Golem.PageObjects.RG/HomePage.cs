@@ -39,10 +39,10 @@ namespace Golem.PageObjects.RG
             }
         }
 
-        public static HomePage OpenHomePage()
+        public static HomePage OpenHomePage(bool LoggedIn=false)
         {
             WebDriverTestBase.driver.Navigate().GoToUrl(Config.GetConfigValue("EnvUrl", "http://revolutiongolf-integration-2014.bluemod.us/"));
-            return new HomePage();
+            return new HomePage(LoggedIn);
         }
 
         public LoginJoinPage GotoLoginJoinPage()

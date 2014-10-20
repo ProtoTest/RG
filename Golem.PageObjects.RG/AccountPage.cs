@@ -48,9 +48,25 @@ namespace Golem.PageObjects.RG
 
         // Purchase History section
 
+        #region "Billing and Shipping Elements"
         //
         // Billing & Shipping section
         //
+        
+        // Billing
+        Element Billing_Card_Info_Label = new Element("Preferred Payment card info label", By.XPath("//*[@class='select payment']/span"));
+        Link Billing_Edit_Link = new Link("Edit Preferred Payment Link", By.XPath("//*[@class='select payment']//a[contains(text(),'Edit')]"));
+        Field Billing_Name_Field = new Field("Billing name field", By.Id("name_1"));
+        Field Billing_Card_number = new Field("Billing card number field", By.Id("card_1"));
+        Dropdown Billing_Expiration_Month_Dropdown = new Dropdown("Billing Expiration Month Dropdown", By.Id("expiration_1"));
+        Dropdown Billing_Expiration_Year_Dropdown = new Dropdown("Billing Expiration Year Dropdown", By.Id("year_1"));
+        Field Billing_CCV_Field = new Field("Billing CCV field", By.Id("ccv_1"));
+        Field Billing_Address_Field = new Field("Billing address field", By.Id("address_1"));
+        Button Billing_Delete_Button = new Button("Billing Edit Delete button", By.XPath("//*[@class='edit-card']//a[contains(text(),'Delete')]"));
+        Button Billing_Cancel_Button = new Button("Billing Edit Cancel button", By.XPath("//*[@class='edit-card']//a[contains(text(),'Cancel')]"));
+        Button Billing_Save_Button = new Button("Billing Edit Save button", By.XPath("//*[@class='edit-card']//a[contains(text(),'Save')]"));
+        
+        // Shipping
         Link ShippingAddressDropdown_Link = new Link("Shipping Address Dropdown link", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_lbActiveAddress"));
         
         // Link is visible when the user clicks on  the shipping address dropdown
@@ -65,6 +81,9 @@ namespace Golem.PageObjects.RG
         Field Shipping_City_field = new Field("Shipping City field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressCity"));
         Button Shipping_Save_button = new Button("Shipping Save Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_btnSubmitAddressEdit"));
         Button Shipping_Cancel_button = new Button("Shipping Cancel Button", By.XPath("//*[@id='p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_pnlEditAddress']//a[contains(text(),'Cancel')]"));
+        
+        #endregion // shipping and billing elements
+
 
         public void Upgrade_To_RG_Plus()
         {
@@ -102,6 +121,66 @@ namespace Golem.PageObjects.RG
 
             return this;
         }
+
+        #region "Preferred Payment"
+
+        private void EnterPreferredPaymentDetails(string name, string card_number, string expiration_month, string expiration_year, string ccv, string billing_address)
+        {
+            if (name != null) Billing_Name_Field.WaitUntil().Visible().Text = name;
+            if (card_number != null) Billing_Card_number.WaitUntil().Visible().Text = card_number;
+            if (expiration_month != null) Billing_Expiration_Month_Dropdown.WaitUntil().Visible().SelectOptionByPartialText(expiration_month);
+            if (expiration_year != null) Billing_Expiration_Year_Dropdown.WaitUntil().Visible().SelectOptionByPartialText(expiration_year);
+            if (ccv != null) Billing_CCV_Field.WaitUntil().Visible().Text = ccv;
+            if (billing_address != null) Billing_Address_Field.WaitUntil().Visible().Text = billing_address;
+        }
+
+        /// <summary>
+        /// Enter the preferred billing details. Note: Params can be null
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="card_number"></param>
+        /// <param name="expiration"></param>
+        /// <param name="year"></param>
+        /// <param name="ccv"></param>
+        /// <param name="billing_address"></param>
+        /// <returns></returns>
+        public AccountPage EditPreferredPayment(string name, string card_number, string expiration_month, string expiration_year, string ccv, string billing_address)
+        {
+            Billing_Edit_Link.WaitUntil().Visible().Click();
+            EnterPreferredPaymentDetails(name, card_number, expiration_month, expiration_year, ccv, billing_address);
+            Billing_Save_Button.WaitUntil().Visible().Click();
+
+            return new AccountPage();
+        }
+
+        public AccountPage DeletePreferredPayment()
+        {
+            Billing_Edit_Link.WaitUntil().Visible().Click();
+            Billing_Delete_Button.WaitUntil().Visible().Click();
+
+            // TODO: some type of validation on whether it is deleted
+            return new AccountPage();
+        }
+
+        public void VerifyPreferredPayment(string name, string card_number_last4, string expiration_month, string expiration_year, string billing_address)
+        {
+            // Enter the billing details form
+            Billing_Edit_Link.WaitUntil().Visible().Click();
+
+            // Verify all the fields
+            Billing_Name_Field.WaitUntil().Visible().Verify().Text(name);
+            Billing_Card_number.WaitUntil().Visible().Verify().Text(card_number_last4);
+
+            // Can't verify these dropdowns, there is no way to determine which one is selected
+            Billing_Expiration_Month_Dropdown.WaitUntil().Visible();
+            Billing_Expiration_Year_Dropdown.WaitUntil().Visible();
+
+            Billing_Address_Field.WaitUntil().Visible().Verify().Text(billing_address);
+        }
+
+        #endregion // Preferred Payment
+
+        #region "Shipping apis"
 
         /// <summary>
         ///  Enter the shipping information into the form. Parameters can be null
@@ -174,6 +253,8 @@ namespace Golem.PageObjects.RG
             return new AccountPage();
         }
 
+        #endregion //shipping apis
+
         public bool IsRGPlusMember()
         {
             try
@@ -192,5 +273,7 @@ namespace Golem.PageObjects.RG
             AccountSettings_Label.Verify().Visible();
             BillingShipping_Label.Verify().Visible();
         }
+
+        
     }
 }

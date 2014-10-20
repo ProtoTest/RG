@@ -60,9 +60,28 @@ namespace Golem.Tests.RG
         }
 
         [Test, Category("Account Tests")]
-        public void EditBilling()
+        public void Delete_Billing_Preferred_Payment()
         {
-            throw new NotImplementedException();
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterYourAccount().DeletePreferredPayment();
+
+            // TODO: go back into account billing and shipping, and verify the payment was deleted after it is implemented by devs
+        }
+
+        [Test, Category("Account Tests")]
+        public void Edit_Billing_Preferred_Payment()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterYourAccount().EditPreferredPayment("James VanDerBeek", "4111111111111111", "12", "2022", "123", "1999 Broadway, Denver, CO 80122");
+
+            // Verify the address was updated
+            HomePage.OpenHomePage(true).
+                LoggedInHeader.EnterYourAccount().
+                VerifyPreferredPayment("James VanDerBeek", "1111", "12", "2022", "1999 Broadway, Denver, CO 80122");
         }
 
         [Test, Category("Account Tests")]
