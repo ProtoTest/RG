@@ -85,9 +85,11 @@ namespace Golem.PageObjects.RG
         #endregion // shipping and billing elements
 
 
-        public void Upgrade_To_RG_Plus()
+        public BecomeMemberPage Upgrade_To_RG_Plus()
         {
-            throw new NotImplementedException();
+            UpgradeToRGPlus_Button.WaitUntil().Visible().Click();
+
+            return new BecomeMemberPage();
         }
 
         /// <summary>
