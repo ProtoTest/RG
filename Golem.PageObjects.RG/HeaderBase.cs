@@ -21,7 +21,6 @@ namespace Golem.PageObjects.RG
         Element Shop = new Element("Shop Link", By.XPath("//nav//a[contains(text(),'Shop')]"));
         Element RG = new Element("@RG Hover", By.XPath("//nav//a[contains(text(),'@RG')]"));
         Element RG_Live = new Element("RG Live Hover", By.XPath("//nav//a[contains(text(),'RG Live')]"));
-        Element OnAir = new Element("On Air?", By.ClassName("nav-onair"));
         Element Search = new Element("Search Link", By.XPath("//*[text()='Search']"));
 
         public override void WaitForElements()
@@ -31,7 +30,6 @@ namespace Golem.PageObjects.RG
             Shop.Verify().Visible();
             RG.Verify().Visible();
             RG_Live.Verify().Visible();
-            OnAir.Verify().Visible();
             Search.Verify().Visible();
         }
     }

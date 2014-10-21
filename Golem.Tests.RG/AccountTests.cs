@@ -18,7 +18,17 @@ namespace Golem.Tests.RG
         [Test, Category("Account Tests")]
         public void UpgradeToRGPlus()
         {
-            throw new NotImplementedException();
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterYourAccount().
+                Upgrade_To_RG_Plus().
+                SelectMembership(BecomeMemberPage.MEMBERSHIP_TYPE.ANNUAL).
+                EnterShippingDetails("ProtoTest Tester", "1999 Broadway", null, "303-896-5309", "80222", "USA", "Colorado", "Denver").
+                ContinueToNextStep().
+                SelectTestPayment().
+                ContinueToNextStep().
+                PlaceOrder();
         }   
 
         [Test, Category("Account Tests")]

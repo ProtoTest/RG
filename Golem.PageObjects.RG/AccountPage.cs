@@ -27,7 +27,7 @@ namespace Golem.PageObjects.RG
         Element PurchaseHistory_Label = new Element("Purchase History Label", ByE.PartialText("Purchase History"));
 
         // Member section
-        Button UpgradeToRGPlus_Button = new Button("Upgrade to RG+ button", By.PartialLinkText("Upgrade to RG+"));
+        Button UpgradeToRGPlus_Button = new Button("Upgrade to RG+ button", By.XPath("//a[contains(text(), 'Upgrade to RG+')]"));
 
         // Account Settings set labels
         Element AccountSettings_NickName_Label = new Element("Account Settings Nickname Label", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_lblNickName"));

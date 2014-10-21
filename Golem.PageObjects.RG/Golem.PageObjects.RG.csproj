@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountPage.cs" />
+    <Compile Include="BecomeMemberPage.cs" />
     <Compile Include="FeaturedProductInfo.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="HeaderBase.cs" />
@@ -99,6 +100,9 @@
     <Compile Include="LoggedOutHeader.cs" />
     <Compile Include="LoginJoinPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecureCheckout_ShippingPage.cs" />
+    <Compile Include="SecureCheckout_BillingPage.cs" />
+    <Compile Include="SecureCheckout_ReviewPlaceOrderPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
