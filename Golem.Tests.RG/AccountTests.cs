@@ -97,8 +97,6 @@ namespace Golem.Tests.RG
         [Test, Category("Account Tests")]
         public void Shipping_AddAddress()
         {
-            
-
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
@@ -110,7 +108,6 @@ namespace Golem.Tests.RG
         [Test, Category("Account Tests"), DependsOn("Shipping_AddAddress")]
         public void Shipping_EditAddress()
         {
-            UserTests.login_join_account_email = "prototest_21145530@mailinator.com";
             HomePage.OpenHomePage().
                GotoLoginJoinPage().
                Login(UserTests.login_join_account_email, UserTests.account_password).
