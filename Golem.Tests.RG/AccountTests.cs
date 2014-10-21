@@ -97,6 +97,8 @@ namespace Golem.Tests.RG
         [Test, Category("Account Tests")]
         public void Shipping_AddAddress()
         {
+            
+
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
@@ -106,22 +108,21 @@ namespace Golem.Tests.RG
         }
 
         [Test, Category("Account Tests"), DependsOn("Shipping_AddAddress")]
-        public void Shipping_DeleteAddress()
-        {
-            throw new NotImplementedException();
-
-
-        }
-
-        [Test, Category("Account Tests")]
         public void Shipping_EditAddress()
         {
+            UserTests.login_join_account_email = "prototest_21145530@mailinator.com";
             HomePage.OpenHomePage().
                GotoLoginJoinPage().
                Login(UserTests.login_join_account_email, UserTests.account_password).
                LoggedInHeader.EnterYourAccount().
-               EditShippingAddress("1999 Broadway", "123 Fake St", null, "Littleton", null, "80127", null).
+               EditShippingAddress("1999 Broadway", "123 Fake St", null, "Littleton", "Colorado", "80127", "USA").
                VerifyCurrentSelectedShippingAddress("123 Fake St"); ;
+        }
+
+        [Test, Category("Account Tests"), DependsOn("Shipping_EditAddress")]
+        public void Shipping_DeleteAddress()
+        {
+            throw new NotImplementedException();
         }
 
     }

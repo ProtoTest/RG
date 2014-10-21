@@ -248,6 +248,7 @@ namespace Golem.PageObjects.RG
         /// <returns></returns>
         public AccountPage EditShippingAddress(string address1_to_edit, string new_address1, string new_address2, string new_city, string new_state, string new_zip, string new_country)
         {
+            ShippingAddressDropdown_Link.WaitUntil().Visible().Click();
             new Element("Shipping address option", By.XPath(String.Format("//*[@class='select-drop']//a[contains(text(),'Edit') and ../a[contains(text(),'{0}')]]", address1_to_edit))).WaitUntil().Visible().Click();
             EnterShippingDetails(new_address1, new_address2, new_city, new_state, new_zip, new_country);
             Shipping_Save_button.WaitUntil().Visible().Click();
