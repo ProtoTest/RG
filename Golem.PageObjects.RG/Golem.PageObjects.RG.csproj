@@ -95,6 +95,7 @@
     <Compile Include="Footer.cs" />
     <Compile Include="HeaderBase.cs" />
     <Compile Include="HomePage.cs" />
+    <Compile Include="InstructorVideosPage.cs" />
     <Compile Include="JoinPage.cs" />
     <Compile Include="LoggedInHeader.cs" />
     <Compile Include="LoggedOutHeader.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="SecureCheckout_ShippingPage.cs" />
     <Compile Include="SecureCheckout_BillingPage.cs" />
     <Compile Include="SecureCheckout_ReviewPlaceOrderPage.cs" />
+    <Compile Include="YourVideosPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

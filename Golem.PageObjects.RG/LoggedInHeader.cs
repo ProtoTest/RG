@@ -30,7 +30,7 @@ namespace Golem.PageObjects.RG
         {
             UserAccount_Link.WaitUntil().Visible();
         }
-        /*
+        
         public YourVideosPage EnterAccount_YourVideos()
         {
             UserAccount_Link.Click();
@@ -38,6 +38,15 @@ namespace Golem.PageObjects.RG
             return new YourVideosPage();
         }
 
+        public InstructorVideosPage EnterInstruction(string instructor)
+        {
+            Instruction.MouseOver();
+            new Element("Instructor - " + instructor, By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]")).Click();
+
+            return new InstructorVideosPage(instructor);
+        }
+
+        /*
         public YourProfilePage EnterAccount_YourProfile()
         {
             UserAccount_Link.Click();

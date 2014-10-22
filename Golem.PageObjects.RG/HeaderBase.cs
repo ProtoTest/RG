@@ -16,12 +16,12 @@ namespace Golem.PageObjects.RG
 {
     public class HeaderBase : BasePageObject
     {
-        Element RG_Logo = new Element("RG LOGO", By.ClassName("logo"));
-        Element Instruction = new Element("Instruction Hover", By.XPath("//nav//a[contains(text(),'Instruction')]"));
-        Element Shop = new Element("Shop Link", By.XPath("//nav//a[contains(text(),'Shop')]"));
-        Element RG = new Element("@RG Hover", By.XPath("//nav//a[contains(text(),'@RG')]"));
-        Element RG_Live = new Element("RG Live Hover", By.XPath("//nav//a[contains(text(),'RG Live')]"));
-        Element Search = new Element("Search Link", By.XPath("//*[text()='Search']"));
+        protected Element RG_Logo = new Element("RG LOGO", By.ClassName("logo"));
+        protected Element Instruction = new Element("Instruction Hover", By.XPath("//nav//a[contains(text(),'Instruction')]"));
+        protected Element Shop = new Element("Shop Link", By.XPath("//nav//a[contains(text(),'Shop')]"));
+        protected Element RG = new Element("@RG Hover", By.XPath("//nav//a[contains(text(),'@RG')]"));
+        protected Element RG_Live = new Element("RG Live Hover", By.XPath("//nav//a[contains(text(),'RG Live')]"));
+        protected Element Search = new Element("Search Link", By.XPath("//*[text()='Search']"));
 
         public override void WaitForElements()
         {
