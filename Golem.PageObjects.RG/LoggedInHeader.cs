@@ -31,17 +31,17 @@ namespace Golem.PageObjects.RG
             UserAccount_Link.WaitUntil().Visible();
         }
         
-        public YourVideosPage EnterAccount_YourVideos()
+        public YourVideosPageBase EnterAccount_YourVideos()
         {
             UserAccount_Link.Click();
             YourVideos_Link.WaitUntil().Visible().Click();
-            return new YourVideosPage();
+            return new YourVideosPageBase();
         }
 
         public InstructorVideosPage EnterInstruction(string instructor)
         {
             Instruction.MouseOver();
-            new Element("Instructor - " + instructor, By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]")).Click();
+            new Element("Instructor - " + instructor, By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]")).WaitUntil().Visible().Click();
 
             return new InstructorVideosPage(instructor);
         }

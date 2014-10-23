@@ -104,7 +104,10 @@
     <Compile Include="SecureCheckout_ShippingPage.cs" />
     <Compile Include="SecureCheckout_BillingPage.cs" />
     <Compile Include="SecureCheckout_ReviewPlaceOrderPage.cs" />
-    <Compile Include="YourVideosPage.cs" />
+    <Compile Include="YourVideosPageBase.cs" />
+    <Compile Include="YourVideos_FavoritesPage.cs" />
+    <Compile Include="YourVideos_FollowingPage.cs" />
+    <Compile Include="YourVideos_QueuePage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

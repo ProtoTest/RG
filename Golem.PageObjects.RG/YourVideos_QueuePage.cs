@@ -14,14 +14,11 @@ using ProtoTest.Golem.WebDriver.Elements.Types;
 
 namespace Golem.PageObjects.RG
 {
-    public class YourVideosPage : BasePageObject
+    public class YourVideos_QueuePage : YourVideosPageBase
     {
-        Element YourVideos_Label = new Element("Your Videos Label", By.XPath("//div[contains(text(),'Your Videos')]"));
-
         public override void WaitForElements()
         {
-            YourVideos_Label.Verify().Visible();
-
+            throw new NotImplementedException();
         }
     }
 }

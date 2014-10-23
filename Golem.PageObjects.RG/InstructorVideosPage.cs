@@ -16,18 +16,26 @@ namespace Golem.PageObjects.RG
 {
     public class InstructorVideosPage : BasePageObject
     {
-        Button FollowInstructor_Button = new Button("Follow Instructor Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_followlnkBtn"));
+        public LoggedInHeader LoggedInHeader = new LoggedInHeader();
+        Button FollowInstructor_Button = new Button("Follow/UnsFollow Instructor Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_followlnkBtn"));
 
         public InstructorVideosPage(string instructor)
         {
-            new Element(instructor + " - Instructor Label", ByE.PartialText(instructor)).Verify().Visible();
+            new Element(instructor + " - Instructor Label", By.XPath(string.Format("//h1[contains(text(),'{0}')]", instructor))).Verify().Visible();
         }
 
         public InstructorVideosPage FollowInstructor()
         {
-            FollowInstructor_Button.Verify().Text("FOLLOW");
-            FollowInstructor_Button.WaitUntil().Visible().Click();
-            FollowInstructor_Button.Verify().Text("FOLLOWING");
+            if (!FollowInstructor_Button.Text.Contains("FOLLOWING"))
+            {
+                FollowInstructor_Button.Verify().Text("FOLLOW");
+                FollowInstructor_Button.WaitUntil().Visible().Click();
+                FollowInstructor_Button.Verify().Text("FOLLOWING");
+            }
+            else
+            {
+                WebDriverTestBase.Log("Already following this instructor");
+            }
 
             return this;
         }

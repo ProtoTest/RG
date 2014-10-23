@@ -34,7 +34,9 @@ namespace Golem.Tests.RG
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
                 LoggedInHeader.EnterInstruction("Woods").
-                FollowInstructor();
+                FollowInstructor().
+                LoggedInHeader.EnterAccount_YourVideos().
+                EnterFollowing().VerifyFollowingInstructor("Woods");
 
         }
     }
