@@ -25,11 +25,8 @@ namespace Golem.Tests.RG
         }
 
         [Test, Category("Your Videos Tests"), DependsOn("EnterYourVideos")]
-        public void FollowInstructorTest()
+        public void FollowInstructor()
         {
-            // TODO -- REmove me
-            UserTests.login_join_account_email = "prototest_21145530@mailinator.com";
-
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
@@ -38,6 +35,18 @@ namespace Golem.Tests.RG
                 LoggedInHeader.EnterAccount_YourVideos().
                 EnterFollowing().VerifyFollowingInstructor("Woods");
 
+        }
+
+        [Test, Category("Your Videos Tests"), DependsOn("FollowInstructor")]
+        public void UnFollowInstructor()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterInstruction("Woods").
+                UnFollowInstructor().
+                LoggedInHeader.EnterAccount_YourVideos().
+                EnterFollowing().VerifyNotFollowingInstructor("Woods");
         }
     }
 }

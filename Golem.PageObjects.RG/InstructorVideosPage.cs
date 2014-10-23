@@ -16,12 +16,13 @@ namespace Golem.PageObjects.RG
 {
     public class InstructorVideosPage : BasePageObject
     {
+        protected string instructor;
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();
-        Button FollowInstructor_Button = new Button("Follow/UnsFollow Instructor Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_followlnkBtn"));
+        protected Button FollowInstructor_Button = new Button("Follow/UnsFollow Instructor Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_followlnkBtn"));
 
         public InstructorVideosPage(string instructor)
         {
-            new Element(instructor + " - Instructor Label", By.XPath(string.Format("//h1[contains(text(),'{0}')]", instructor))).Verify().Visible();
+            this.instructor = instructor;
         }
 
         public InstructorVideosPage FollowInstructor()
@@ -42,15 +43,23 @@ namespace Golem.PageObjects.RG
 
         public InstructorVideosPage UnFollowInstructor()
         {
-            FollowInstructor_Button.Verify().Text("FOLLOWING");
-            FollowInstructor_Button.WaitUntil().Visible().Click();
-            FollowInstructor_Button.Verify().Text("FOLLOW");
+            if (FollowInstructor_Button.Text.Contains("FOLLOWING"))
+            {
+                FollowInstructor_Button.Verify().Text("FOLLOWING");
+                FollowInstructor_Button.WaitUntil().Visible().Click();
+                FollowInstructor_Button.Verify().Text("FOLLOW");
+            }
+            else
+            {
+                WebDriverTestBase.Log("Already following instructor: " + instructor);
+            }
 
             return this;
         }
 
         public override void WaitForElements()
         {
+            new Element(instructor + " - Instructor Label", By.XPath(string.Format("//h1[contains(text(),'{0}')]", instructor))).Verify().Visible();
             FollowInstructor_Button.Verify().Visible();
         }
     }
