@@ -48,5 +48,23 @@ namespace Golem.Tests.RG
                 LoggedInHeader.EnterAccount_YourVideos().
                 EnterFollowing().VerifyNotFollowingInstructor("Woods");
         }
+
+        [Test, Category("Your Videos Tests")]
+        public void QueueVideoTest()
+        {
+            // TODO: remove this
+            UserTests.login_join_account_email = "prototest_21145530@mailinator.com";
+
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterInstruction("Woods");
+        }
+
+        [Test, Category("Your Videos Tests")]
+        public void FavoritesVideoTest()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

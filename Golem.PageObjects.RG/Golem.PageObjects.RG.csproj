@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="AccountPage.cs" />
     <Compile Include="BecomeMemberPage.cs" />
+    <Compile Include="Components\VideoDetails.cs" />
     <Compile Include="FeaturedProductInfo.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="HeaderBase.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="SecureCheckout_ShippingPage.cs" />
     <Compile Include="SecureCheckout_BillingPage.cs" />
     <Compile Include="SecureCheckout_ReviewPlaceOrderPage.cs" />
+    <Compile Include="VideoPlayingPage.cs" />
     <Compile Include="YourVideosPageBase.cs" />
     <Compile Include="YourVideos_FavoritesPage.cs" />
     <Compile Include="YourVideos_FollowingPage.cs" />
