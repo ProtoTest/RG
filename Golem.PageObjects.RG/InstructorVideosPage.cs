@@ -67,9 +67,8 @@ namespace Golem.PageObjects.RG
             foreach (IWebElement video in videos)
             {
                 string video_title = video.FindInChildren(By.ClassName("title")).Text;
-                Link video_link = (Link)video.FindInChildren(By.TagName("a"));
-                video_link.name = "Video Link Element";
-                video_detail_list.Add(new VideoDetails(video_link, video_title));
+                IWebElement video_link_ele = video.FindInChildren(By.TagName("a"));
+                video_detail_list.Add(new VideoDetails(video_link_ele, video_title));
             }
 
             return video_detail_list;

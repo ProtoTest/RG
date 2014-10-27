@@ -26,18 +26,41 @@ namespace Golem.PageObjects.RG
         public VideoPlayingPage AddToQueue()
         {
             Video.MouseOver();
-            AddToQueue_Link.Verify().Visible().Click();
 
-            // TODO: Verify CSS now that it is selected?
+            if (!AddToQueue_Link.GetAttribute("class").Contains("active"))
+            {
+                AddToQueue_Link.WaitUntil().Visible().Click();
+
+                // After adding the video, the 'class' attribute now has an 'active' name addeds 
+                AddToQueue_Link.WaitUntil().CSS("class", "active");
+
+                // TODO: Image verification?
+            }
+            else
+            {
+                TestBase.Log("This video is already added to the user Queue list of videos");
+            }
+
             return this;
         }
 
         public VideoPlayingPage AddToFavorites()
         {
             Video.MouseOver();
-            AddToFavorites_Link.Verify().Visible().Click();
 
-            // TODO: Verify CSS now that it is selected?
+            if (!AddToFavorites_Link.GetAttribute("class").Contains("active"))
+            {
+                AddToFavorites_Link.Verify().Visible().Click();
+
+                // After adding the video, the 'class' attribute now has an 'active' name addeds 
+                AddToFavorites_Link.WaitUntil().CSS("class", "active");
+
+                // TODO: Image verification?
+            }
+            else
+            {
+                TestBase.Log("This video is already added to the user favorites list of videos");
+            }
             return this;
         }
 

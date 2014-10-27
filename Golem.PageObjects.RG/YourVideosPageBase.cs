@@ -17,10 +17,19 @@ namespace Golem.PageObjects.RG
     public class YourVideosPageBase : BasePageObject
     {
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();
-        Element YourVideos_Label = new Element("Your Videos Label", By.XPath("//div[contains(text(),'Your Videos')]"));
-        Link Following_Link = new Link("Your Videos - Following Link", By.PartialLinkText("Following"));
-        Link Queue_Link = new Link("Your Videos - Following Link", By.PartialLinkText("Queue"));
-        Link Favorites_Link = new Link("Your Videos - Following Link", By.PartialLinkText("Favorites"));
+        protected Element YourVideos_Label = new Element("Your Videos Label", By.XPath("//div[contains(text(),'Your Videos')]"));
+        protected Link Following_Link = new Link("Your Videos - Following Link", By.PartialLinkText("Following"));
+        protected Link Queue_Link = new Link("Your Videos - Following Link", By.PartialLinkText("Queue"));
+        protected Link Favorites_Link = new Link("Your Videos - Following Link", By.PartialLinkText("Favorites"));
+
+        public YourVideosPageBase VerifyVideoOnPage(string VideoTitle)
+        {
+            TestBase.Log(string.Format("Verifying video with title '{0}' is displayed on '{1}", VideoTitle, this.className)); 
+
+            new Element("Video with Title: " + VideoTitle, ByE.PartialText(VideoTitle)).WaitUntil().Visible();
+
+            return this;
+        }
 
         public YourVideos_FollowingPage EnterFollowing()
         {

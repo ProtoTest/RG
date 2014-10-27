@@ -16,10 +16,10 @@ namespace Golem.PageObjects.RG.Components
 {
     public class VideoDetails
     {
-        public readonly Link Video_Link;
+        public readonly IWebElement Video_Link;
         public readonly string Video_Title;
 
-        public VideoDetails(Link Video_Link, string Video_Title)
+        public VideoDetails(IWebElement Video_Link, string Video_Title)
         {
             this.Video_Link = Video_Link;
             this.Video_Title = Video_Title;

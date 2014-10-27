@@ -52,19 +52,43 @@ namespace Golem.Tests.RG
         [Test, Category("Your Videos Tests")]
         public void QueueVideoTest()
         {
-            // TODO: remove this
-            UserTests.login_join_account_email = "prototest_21145530@mailinator.com";
+            // Enter Tiger Woods Instruction page, get his list of videos and grab the first one from the video list
+            Golem.PageObjects.RG.Components.VideoDetails FirstInstructionVideo =
+                HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterInstruction("Woods").GetFeaturedVideoList().First();
 
+            // Click to start playing the video and add it to the user queue
+            FirstInstructionVideo.Video_Link.Click();
+            HomePage page = new VideoPlayingPage().AddToQueue().LoggedInHeader.LogOut();
+
+            // Log Back in and verify the video is in the user queue
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
-                LoggedInHeader.EnterInstruction("Woods");
+                LoggedInHeader.EnterAccount_YourVideos().EnterQueue().VerifyVideoOnPage(FirstInstructionVideo.Video_Title);
         }
 
         [Test, Category("Your Videos Tests")]
         public void FavoritesVideoTest()
         {
-            throw new NotImplementedException();
+            // Enter Tiger Woods Instruction page, get his list of videos and grab the first one from the video list
+            Golem.PageObjects.RG.Components.VideoDetails FirstInstructionVideo =
+                HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterInstruction("Woods").GetFeaturedVideoList().First();
+
+            // Click to start playing the video and add it to the user queue
+            FirstInstructionVideo.Video_Link.Click();
+            HomePage page = new VideoPlayingPage().AddToFavorites().LoggedInHeader.LogOut();
+
+            // Log Back in and verify the video is in the user queue
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterAccount_YourVideos().EnterFavorites().VerifyVideoOnPage(FirstInstructionVideo.Video_Title);
         }
     }
 }

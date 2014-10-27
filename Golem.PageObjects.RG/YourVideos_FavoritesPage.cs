@@ -18,7 +18,7 @@ namespace Golem.PageObjects.RG
     {
         public override void WaitForElements()
         {
-            throw new NotImplementedException();
+            Assert.Contains(WebDriverTestBase.driver.Url, "favorites", "Failed to verify webdriver is on the user 'favorites' page");
         }
     }
 }
