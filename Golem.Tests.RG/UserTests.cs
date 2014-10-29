@@ -34,9 +34,6 @@ namespace Golem.Tests.RG
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 CreateAccount(login_join_account_email, account_password);
-
-            // Update the test configuration for the new user created
-            Config.UpdateConfigFile("UserUnderTest", login_join_account_email);
         }
 
         [Test, Category("User Test")]
