@@ -56,31 +56,31 @@ namespace Golem.PageObjects.RG
         // Billing
         Element Billing_Card_Info_Label = new Element("Preferred Payment card info label", By.XPath("//*[@class='select payment']/span"));
         Link Billing_Edit_Link = new Link("Edit Preferred Payment Link", By.XPath("//*[@class='select payment']//a[contains(text(),'Edit')]"));
-        Field Billing_Name_Field = new Field("Billing name field", By.Id("name_1"));
-        Field Billing_Card_number = new Field("Billing card number field", By.Id("card_1"));
-        Dropdown Billing_Expiration_Month_Dropdown = new Dropdown("Billing Expiration Month Dropdown", By.Id("expiration_1"));
-        Dropdown Billing_Expiration_Year_Dropdown = new Dropdown("Billing Expiration Year Dropdown", By.Id("year_1"));
-        Field Billing_CCV_Field = new Field("Billing CCV field", By.Id("ccv_1"));
-        Field Billing_Address_Field = new Field("Billing address field", By.Id("address_1"));
+        Field Billing_Name_Field = new Field("Billing name field", By.Id("txtCreditFormNameOnCard"));
+        Field Billing_Card_number = new Field("Billing card number field", By.Id("txtCreditFormCardNumber"));
+        Dropdown Billing_Expiration_Month_Dropdown = new Dropdown("Billing Expiration Month Dropdown", By.Id("ddlExpirationMonth"));
+        Dropdown Billing_Expiration_Year_Dropdown = new Dropdown("Billing Expiration Year Dropdown", By.Id("ddlExpirationYear"));
+        Field Billing_CCV_Field = new Field("Billing CCV field", By.Id("txtCreditFormCardCcv"));
+        Field Billing_Address_Field = new Field("Billing address field", By.Id("txtCreditFormCardAddress"));
         Button Billing_Delete_Button = new Button("Billing Edit Delete button", By.XPath("//*[@class='edit-card']//a[contains(text(),'Delete')]"));
         Button Billing_Cancel_Button = new Button("Billing Edit Cancel button", By.XPath("//*[@class='edit-card']//a[contains(text(),'Cancel')]"));
-        Button Billing_Save_Button = new Button("Billing Edit Save button", By.XPath("//*[@class='edit-card']//a[contains(text(),'Save')]"));
+        Button Billing_Save_Button = new Button("Billing Edit Save button", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCreditForm_btnSave"));
         
         // Shipping
-        Link ShippingAddressDropdown_Link = new Link("Shipping Address Dropdown link", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_lbActiveAddress"));
+        Link ShippingAddressDropdown_Link = new Link("Shipping Address Dropdown link", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_lbActiveAddress"));
         
         // Link is visible when the user clicks on  the shipping address dropdown
-        Link Shipping_Add_Address_Link = new Link("Shipping add address link", ByE.PartialText("Add New Address"));
+        Link Shipping_Add_Address_Link = new Link("Shipping add address link", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_lbAddNew"));
 
         // Add address form fields
-        Field Shipping_Address1_field = new Field("Shipping Address 1 field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressLine1"));
-        Field Shipping_Address2_field = new Field("Shipping Address 2 field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressLine2"));
-        Field Shipping_Zip_field = new Field("Shipping zip field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressZip"));
-        Dropdown Shipping_Country_Dropdown = new Dropdown("Shipping Country Dropdown", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_ucCountrySelector_uniSelectorCountry_drpSingleSelect"));
-        Dropdown Shipping_State_Dropdown = new Dropdown("Shipping State dropdown", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_ucCountrySelector_uniSelectorState_drpSingleSelect"));
-        Field Shipping_City_field = new Field("Shipping City field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressCity"));
-        Button Shipping_Save_button = new Button("Shipping Save Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_btnSubmitAddressEdit"));
-        Button Shipping_Cancel_button = new Button("Shipping Cancel Button", By.XPath("//*[@id='p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_pnlEditAddress']//a[contains(text(),'Cancel')]"));
+        Field Shipping_Address1_field = new Field("Shipping Address 1 field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressLine1"));
+        Field Shipping_Address2_field = new Field("Shipping Address 2 field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressLine2"));
+        Field Shipping_Zip_field = new Field("Shipping zip field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressZip"));
+        Dropdown Shipping_Country_Dropdown = new Dropdown("Shipping Country Dropdown", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_ucCountrySelector_uniSelectorCountry_drpSingleSelect"));
+        Dropdown Shipping_State_Dropdown = new Dropdown("Shipping State dropdown", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_ucCountrySelector_uniSelectorState_drpSingleSelect"));
+        Field Shipping_City_field = new Field("Shipping City field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_txtAddressCity"));
+        Button Shipping_Save_button = new Button("Shipping Save Button", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_btnSubmitAddressEdit"));
+        Button Shipping_Cancel_button = new Button("Shipping Cancel Button", By.XPath("//*[@id='p_lt_ctl15_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl04_RGCustomerAddress_pnlEditAddress']//a[contains(text(),'Cancel')]"));
         
         #endregion // shipping and billing elements
 
@@ -130,8 +130,8 @@ namespace Golem.PageObjects.RG
         {
             if (name != null) Billing_Name_Field.WaitUntil().Visible().Text = name;
             if (card_number != null) Billing_Card_number.WaitUntil().Visible().Text = card_number;
-            if (expiration_month != null) Billing_Expiration_Month_Dropdown.WaitUntil().Visible().SelectOptionByPartialText(expiration_month);
-            if (expiration_year != null) Billing_Expiration_Year_Dropdown.WaitUntil().Visible().SelectOptionByPartialText(expiration_year);
+            if (expiration_month != null) Billing_Expiration_Month_Dropdown.WaitUntil().Visible().SelectOption(expiration_month);
+            if (expiration_year != null) Billing_Expiration_Year_Dropdown.WaitUntil().Visible().SelectOption(expiration_year);
             if (ccv != null) Billing_CCV_Field.WaitUntil().Visible().Text = ccv;
             if (billing_address != null) Billing_Address_Field.WaitUntil().Visible().Text = billing_address;
         }
@@ -148,7 +148,9 @@ namespace Golem.PageObjects.RG
         /// <returns></returns>
         public AccountPage EditPreferredPayment(string name, string card_number, string expiration_month, string expiration_year, string ccv, string billing_address)
         {
+            VerifyPaymentAccordian_NotDisplayed();
             Billing_Edit_Link.WaitUntil().Visible().Click();
+            VerifyPaymentAccordian_Displayed();
             EnterPreferredPaymentDetails(name, card_number, expiration_month, expiration_year, ccv, billing_address);
             Billing_Save_Button.WaitUntil().Visible().Click();
 
@@ -157,11 +159,19 @@ namespace Golem.PageObjects.RG
 
         public AccountPage DeletePreferredPayment()
         {
+            VerifyPaymentAccordian_NotDisplayed();
             Billing_Edit_Link.WaitUntil().Visible().Click();
+            VerifyPaymentAccordian_Displayed();
             Billing_Delete_Button.WaitUntil().Visible().Click();
 
-            // TODO: some type of validation on whether it is deleted
             return new AccountPage();
+        }
+
+        public AccountPage VerifyPreferredPayment_DropDown_Text(string label_text)
+        {
+            Billing_Card_Info_Label.WaitUntil().Visible().Verify().Text(label_text);
+
+            return this;
         }
 
         public void VerifyPreferredPayment(string name, string card_number_last4, string expiration_month, string expiration_year, string billing_address)
@@ -169,15 +179,41 @@ namespace Golem.PageObjects.RG
             // Enter the billing details form
             Billing_Edit_Link.WaitUntil().Visible().Click();
 
-            // Verify all the fields
-            Billing_Name_Field.WaitUntil().Visible().Verify().Text(name);
-            Billing_Card_number.WaitUntil().Visible().Verify().Text(card_number_last4);
+            VerifyPaymentAccordian_Displayed();
 
-            // Can't verify these dropdowns, there is no way to determine which one is selected
+            // Verify all the fields
+            Billing_Name_Field.Verify().Text(name);
+            Billing_Card_number.Verify().Text(card_number_last4);
+
+            // TODO: Can't verify these dropdowns, there is no way to determine which one is selected
+
+            Billing_Address_Field.Verify().Text(billing_address);
+        }
+
+        public AccountPage VerifyPaymentAccordian_Displayed()
+        {
+            Billing_Name_Field.WaitUntil().Visible();
+            Billing_Card_number.WaitUntil().Visible();
             Billing_Expiration_Month_Dropdown.WaitUntil().Visible();
             Billing_Expiration_Year_Dropdown.WaitUntil().Visible();
+            Billing_Address_Field.WaitUntil().Visible();
+            Billing_Cancel_Button.WaitUntil().Visible();
+            Billing_Save_Button.WaitUntil().Visible();
 
-            Billing_Address_Field.WaitUntil().Visible().Verify().Text(billing_address);
+            return this;
+        }
+
+        public AccountPage VerifyPaymentAccordian_NotDisplayed()
+        {
+            Billing_Name_Field.WaitUntil().Not().Visible();
+            Billing_Card_number.WaitUntil().Not().Visible();
+            Billing_Expiration_Month_Dropdown.WaitUntil().Not().Visible();
+            Billing_Expiration_Year_Dropdown.WaitUntil().Not().Visible();
+            Billing_Address_Field.WaitUntil().Not().Visible();
+            Billing_Cancel_Button.WaitUntil().Not().Visible();
+            Billing_Save_Button.WaitUntil().Not().Visible();
+
+            return this;
         }
 
         #endregion // Preferred Payment
@@ -215,9 +251,10 @@ namespace Golem.PageObjects.RG
         /// <returns></returns>
         public AccountPage AddShippingAddress(string address1, string address2, string city, string state, string zip, string country)
         {
+            VerifyShippingAccordian_NotDisplayed();
             ShippingAddressDropdown_Link.WaitUntil().Visible().Click();
             Shipping_Add_Address_Link.WaitUntil().Visible().Click();
-
+            VerifyShippingAccordian_Displayed();
             EnterShippingDetails(address1, address2, city, state, zip, country);
             Shipping_Save_button.WaitUntil().Visible().Click();
 
@@ -248,12 +285,41 @@ namespace Golem.PageObjects.RG
         /// <returns></returns>
         public AccountPage EditShippingAddress(string address1_to_edit, string new_address1, string new_address2, string new_city, string new_state, string new_zip, string new_country)
         {
+            VerifyShippingAccordian_NotDisplayed();
             ShippingAddressDropdown_Link.WaitUntil().Visible().Click();
             new Element("Shipping address option", By.XPath(String.Format("//*[@class='select-drop']//a[contains(text(),'Edit') and ../a[contains(text(),'{0}')]]", address1_to_edit))).WaitUntil().Visible().Click();
+            VerifyShippingAccordian_Displayed();
             EnterShippingDetails(new_address1, new_address2, new_city, new_state, new_zip, new_country);
             Shipping_Save_button.WaitUntil().Visible().Click();
+            VerifyShippingAccordian_NotDisplayed();
 
             return new AccountPage();
+        }
+
+        public AccountPage VerifyShippingAccordian_Displayed()
+        {
+            Shipping_Address1_field.WaitUntil().Visible();
+            Shipping_Address2_field.WaitUntil().Visible();
+            Shipping_Zip_field.WaitUntil().Visible();
+            Shipping_Country_Dropdown.WaitUntil().Visible();
+            Shipping_City_field.WaitUntil().Visible();
+            Shipping_Cancel_button.WaitUntil().Visible();
+            Shipping_Save_button.WaitUntil().Visible();
+
+            return this;
+        }
+
+        public AccountPage VerifyShippingAccordian_NotDisplayed()
+        {
+            Shipping_Address1_field.WaitUntil().Not().Visible();
+            Shipping_Address2_field.WaitUntil().Not().Visible();
+            Shipping_Zip_field.WaitUntil().Not().Visible();
+            Shipping_Country_Dropdown.WaitUntil().Not().Visible();
+            Shipping_City_field.WaitUntil().Not().Visible();
+            Shipping_Cancel_button.WaitUntil().Not().Visible();
+            Shipping_Save_button.WaitUntil().Not().Visible();
+
+            return this;
         }
 
         #endregion //shipping apis

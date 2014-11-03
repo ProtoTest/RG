@@ -14,6 +14,7 @@ namespace Golem.Tests.RG
     [TestFixture, DependsOn(typeof(UserTests))]
     public class AccountTests : WebDriverTestBase
     {
+        public string NoPaymentAddedText = "Add new credit card";
 
         [Test, Category("Account Tests")]
         public void UpgradeToRGPlus()
@@ -70,28 +71,63 @@ namespace Golem.Tests.RG
         }
 
         [Test, Category("Account Tests")]
+        public void Add_Billing_Preferred_Payment()
+        {
+            string exp_month = "12";
+            string exp_year = "2022";
+            string name = "James VanDerBeek";
+            string address = "1999 Broadway, Denver, CO 80122";
+            string ccv = "123";
+            string test_cc = "4111111111111111";
+            string cc_last_four = "1111";
+
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterYourAccount().
+                EditPreferredPayment(name, test_cc, exp_month, exp_year, ccv, address).
+                VerifyPreferredPayment(name, cc_last_four, exp_month, exp_year, address);
+
+            // Verify the address was updated
+            HomePage.OpenHomePage(true).
+                LoggedInHeader.EnterYourAccount().
+                VerifyPreferredPayment(name, cc_last_four, exp_month, exp_year, address);
+        }
+        
+        [Test, Category("Account Tests"), DependsOn("Add_Billing_Preferred_Payment")]
+        public void Edit_Billing_Preferred_Payment()
+        {
+            string exp_month = "11";
+            string exp_year = "2021";
+            string name = "Curt Russell";
+            string address = "2100 Pennsylvania Ave, Washington, DC 20052";
+            string ccv = "999";
+            string test_cc = "4111111111111111";
+            string cc_last_four = "1111";
+
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterYourAccount().EditPreferredPayment(name, test_cc, exp_month, exp_year, ccv, address);
+
+            // Verify the initial card label text and address was updated
+            HomePage.OpenHomePage(true).
+                LoggedInHeader.EnterYourAccount().
+                VerifyPreferredPayment(name, cc_last_four, exp_month, exp_year, address);
+        }
+
+        [Test, Category("Account Tests"), DependsOn("Edit_Billing_Preferred_Payment")]
         public void Delete_Billing_Preferred_Payment()
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
-                LoggedInHeader.EnterYourAccount().DeletePreferredPayment();
-
-            // TODO: go back into account billing and shipping, and verify the payment was deleted after it is implemented by devs
-        }
-
-        [Test, Category("Account Tests")]
-        public void Edit_Billing_Preferred_Payment()
-        {
-            HomePage.OpenHomePage().
-                GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
-                LoggedInHeader.EnterYourAccount().EditPreferredPayment("James VanDerBeek", "4111111111111111", "12", "2022", "123", "1999 Broadway, Denver, CO 80122");
-
-            // Verify the address was updated
-            HomePage.OpenHomePage(true).
                 LoggedInHeader.EnterYourAccount().
-                VerifyPreferredPayment("James VanDerBeek", "1111", "12", "2022", "1999 Broadway, Denver, CO 80122");
+                DeletePreferredPayment().
+                VerifyPreferredPayment_DropDown_Text(NoPaymentAddedText).LoggedInHeader.LogOut();
+
+            // Log back in and verify still no payment added
+            VerifyNoPreferredPaymentAdded();
         }
 
         [Test, Category("Account Tests")]
@@ -108,6 +144,8 @@ namespace Golem.Tests.RG
         [Test, Category("Account Tests"), DependsOn("Shipping_AddAddress")]
         public void Shipping_EditAddress()
         {
+            UserTests.login_join_account_email = "prototest_03004910_1@mailinator.com";
+
             HomePage.OpenHomePage().
                GotoLoginJoinPage().
                Login(UserTests.login_join_account_email, UserTests.account_password).
@@ -120,6 +158,15 @@ namespace Golem.Tests.RG
         public void Shipping_DeleteAddress()
         {
             throw new NotImplementedException();
+        }
+
+        private void VerifyNoPreferredPaymentAdded()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(UserTests.login_join_account_email, UserTests.account_password).
+                LoggedInHeader.EnterYourAccount().
+                VerifyPreferredPayment_DropDown_Text(NoPaymentAddedText);
         }
 
     }
