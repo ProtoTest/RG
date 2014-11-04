@@ -95,6 +95,7 @@
     <Compile Include="FeaturedProductInfo.cs" />
     <Compile Include="HeaderFooter\Footer.cs" />
     <Compile Include="HeaderFooter\HeaderBase.cs" />
+    <Compile Include="SearchResultsPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="InstructorVideosPage.cs" />
     <Compile Include="JoinPage.cs" />

@@ -11,6 +11,7 @@ using ProtoTest.Golem.WebDriver;
 using OpenQA.Selenium;
 using ProtoTest.Golem.WebDriver.Elements;
 using ProtoTest.Golem.WebDriver.Elements.Types;
+using Golem.PageObjects.RG;
 
 namespace Golem.PageObjects.RG
 {
@@ -22,6 +23,12 @@ namespace Golem.PageObjects.RG
         protected Element RG = new Element("@RG Hover", By.XPath("//nav//a[contains(text(),'@RG')]"));
         protected Element RG_Live = new Element("RG Live Hover", By.XPath("//nav//a[contains(text(),'RG Live')]"));
         protected Element Search = new Element("Search Link", By.XPath("//*[text()='Search']"));
+
+        public SearchResultsPage SearchFor(string text)
+        {
+            Search.Click();
+            return new SearchResultsPage().SearchFor(text);
+        }
 
         public override void WaitForElements()
         {

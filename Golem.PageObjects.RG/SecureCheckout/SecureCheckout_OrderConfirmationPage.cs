@@ -16,7 +16,6 @@ namespace Golem.PageObjects.RG
 {
     public class SecureCheckout_OrderConfirmationPage : BasePageObject
     {
-        private string UserEmail;
         protected Link PrintCopy_Link = new Link("Print a Copy Link", By.PartialLinkText("PRINT A COPY"));
 
         public override void WaitForElements()
