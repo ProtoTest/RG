@@ -19,8 +19,6 @@ namespace Golem.Tests.RG
         [Test, Category("Account Tests")]
         public void UpgradeToRGPlus()
         {
-            UserTests.login_join_account_email = "prototest_04151132_1@mailinator.com";
-
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
