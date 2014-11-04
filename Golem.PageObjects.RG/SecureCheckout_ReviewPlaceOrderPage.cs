@@ -16,19 +16,21 @@ namespace Golem.PageObjects.RG
 {
     public class SecureCheckout_ReviewPlaceOrderPage : BasePageObject
     {
-        public Checkbox AcceptTerms_Checkbox = new Checkbox("Accept Terms and Conditions checkbox", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_ConfirmationCheckbox_chkAccept"));
-        public Button PlaceOrder_Button = new Button("Place Order Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl01_dwbNext_btn_btn"));
+        public Checkbox AcceptTerms_Checkbox = new Checkbox("Accept Terms and Conditions checkbox", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_ConfirmationCheckbox_chkAccept"));
+        public Button PlaceOrder_Button = new Button("Place Order Button", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl01_dwbNext_btn_btn"));
 
-        public void PlaceOrder()
+        public SecureCheckout_OrderConfirmationPage PlaceOrder()
         {
-            AcceptTerms_Checkbox.WaitUntil().Visible().Click();
-            PlaceOrder_Button.WaitUntil().Visible().Click();
+            AcceptTerms_Checkbox.Click();
+            PlaceOrder_Button.Click();
 
-            // TODO: handle the confirmation page
+            return new SecureCheckout_OrderConfirmationPage();
         }
 
         public override void WaitForElements()
         {
+            AcceptTerms_Checkbox.WaitUntil().Visible();
+            PlaceOrder_Button.WaitUntil().Visible();
         }
     }
 }

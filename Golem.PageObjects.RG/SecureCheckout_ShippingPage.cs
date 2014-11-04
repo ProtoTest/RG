@@ -19,17 +19,17 @@ namespace Golem.PageObjects.RG
     /// </summary>
     public class SecureCheckout_ShippingPage : BasePageObject
     {
-        Dropdown SavedAddress_Dropdown = new Dropdown("Saved Address Dropdown", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_drpAddresses"));
-        Field Shipping_Phone = new Field("Billing phone number field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressPhone_textbox"));
-        Field Shipping_FullName_Field = new Field("Billing Full name field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_cdCustomerDetails_plcUp_customerForm_CustomerFirstName_textbox"));
-        Field Shipping_Address1_field = new Field("Billing Address 1 field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressLine1_textbox"));
-        Field Shipping_Address2_field = new Field("Billing Address 2 field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressLine2_textbox"));
-        Field Shipping_Zip_field = new Field("Billing zip field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressZip_textbox"));
-        Dropdown Shipping_Country_Dropdown = new Dropdown("Billing Country Dropdown", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressCountryID_uniSelectorCountry_drpSingleSelect"));
-        Dropdown Shipping_State_Dropdown = new Dropdown("Billing State dropdown", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressCountryID_uniSelectorState_drpSingleSelect"));
-        Field Shipping_City_field = new Field("Billing City field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressCity_textbox"));
+        Dropdown SavedAddress_Dropdown = new Dropdown("Saved Address Dropdown", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_drpAddresses"));
+        Field Shipping_Phone = new Field("Shipping phone number field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressPhone_textbox"));
+        Field Shipping_FullName_Field = new Field("Shipping Full name field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_cdCustomerDetails_plcUp_customerForm_CustomerFirstName_textbox"));
+        Field Shipping_Address1_field = new Field("Shipping Address 1 field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressLine1_textbox"));
+        Field Shipping_Address2_field = new Field("Shipping Address 2 field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressLine2_textbox"));
+        Field Shipping_Zip_field = new Field("Shipping zip field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressZip_textbox"));
+        Dropdown Shipping_Country_Dropdown = new Dropdown("Shipping Country Dropdown", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressCountryID_uniSelectorCountry_drpSingleSelect"));
+        Dropdown Shipping_State_Dropdown = new Dropdown("Shipping State dropdown", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressCountryID_uniSelectorState_drpSingleSelect"));
+        Field Shipping_City_field = new Field("Shipping City field", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl00_caAddressShipping_plcUp_addressForm_AddressCity_textbox"));
 
-        Button Continue_Button = new Button("Continue button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl01_dwbNext_btn_hyperLink"));
+        Button Continue_Button = new Button("Continue button", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl00_pphCartContent_p_lt_ctl02_pphCartContainer_p_lt_ctl01_dwbNext_btn_lblText"));
 
         public SecureCheckout_BillingPage ContinueToNextStep()
         {
