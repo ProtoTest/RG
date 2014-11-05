@@ -11,6 +11,7 @@ using ProtoTest.Golem.WebDriver;
 using OpenQA.Selenium;
 using ProtoTest.Golem.WebDriver.Elements;
 using ProtoTest.Golem.WebDriver.Elements.Types;
+using Golem.PageObjects.RG.Components;
 
 namespace Golem.PageObjects.RG
 {
@@ -18,6 +19,7 @@ namespace Golem.PageObjects.RG
     {
         protected Field Search_Field = new Field("Search box input", By.Id("p_lt_ctl00_sbSearchBox_txtWord"));
         protected Element SearchResult_Video_Section = new Element("Video Search Results", By.XPath("//h2//*[contains(text(),'Videos')]"));
+        protected List<VideoDetails> FeaturedVideos;
 
         public SearchResultsPage SearchFor(string text)
         {
@@ -25,6 +27,13 @@ namespace Golem.PageObjects.RG
             Search_Field.SendKeys(Keys.Enter);
 
             return new SearchResultsPage();
+        }
+
+        public SearchResultsPage PopulateFeaturedVideosList()
+        {
+            FeaturedVideos = new FeaturedVideoListSection().VideoList;
+
+            return this;
         }
 
         public override void WaitForElements()

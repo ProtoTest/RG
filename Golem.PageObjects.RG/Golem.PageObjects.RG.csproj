@@ -91,7 +91,7 @@
   <ItemGroup>
     <Compile Include="AccountPage.cs" />
     <Compile Include="BecomeMemberPage.cs" />
-    <Compile Include="Components\VideoDetails.cs" />
+    <Compile Include="Components\FeaturedVideoListSection.cs" />
     <Compile Include="FeaturedProductInfo.cs" />
     <Compile Include="HeaderFooter\Footer.cs" />
     <Compile Include="HeaderFooter\HeaderBase.cs" />

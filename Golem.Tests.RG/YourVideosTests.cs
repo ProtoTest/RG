@@ -57,7 +57,7 @@ namespace Golem.Tests.RG
                 HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
-                LoggedInHeader.EnterInstruction("Woods").GetFeaturedVideoList().First();
+                LoggedInHeader.EnterInstruction("Woods").FeaturedVideos.First();
 
             // Click to start playing the video and add it to the user queue
             FirstInstructionVideo.Video_Link.Click();
@@ -78,7 +78,7 @@ namespace Golem.Tests.RG
                 HomePage.OpenHomePage().
                 GotoLoginJoinPage().
                 Login(UserTests.login_join_account_email, UserTests.account_password).
-                LoggedInHeader.EnterInstruction("Woods").GetFeaturedVideoList().First();
+                LoggedInHeader.EnterInstruction("Woods").FeaturedVideos.First();
 
             // Click to start playing the video and add it to the user queue
             FirstInstructionVideo.Video_Link.Click();

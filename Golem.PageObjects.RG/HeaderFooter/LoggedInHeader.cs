@@ -40,7 +40,7 @@ namespace Golem.PageObjects.RG
 
         public InstructorVideosPage EnterInstruction(string instructor)
         {
-            Instruction.MouseOver();
+            Instruction.Click();
             new Element("Instructor - " + instructor, By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]")).WaitUntil().Visible().Click();
 
             return new InstructorVideosPage(instructor);

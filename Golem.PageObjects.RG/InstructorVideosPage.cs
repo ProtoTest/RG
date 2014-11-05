@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,7 @@ using OpenQA.Selenium;
 using Golem.PageObjects.RG.Components;
 using ProtoTest.Golem.WebDriver.Elements;
 using ProtoTest.Golem.WebDriver.Elements.Types;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Golem.PageObjects.RG
 {
@@ -20,7 +19,8 @@ namespace Golem.PageObjects.RG
     {
         protected string instructor;
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();
-        protected Button FollowInstructor_Button = new Button("Follow/UnFollow Instructor Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_followlnkBtn"));
+        protected Button FollowInstructor_Button = new Button("Follow/UnFollow Instructor Button", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_desktopLink"));
+        public readonly List<VideoDetails> FeaturedVideos = new FeaturedVideoListSection().VideoList;
 
         public InstructorVideosPage(string instructor)
         {
@@ -59,20 +59,6 @@ namespace Golem.PageObjects.RG
             return this;
         }
 
-        public List<VideoDetails> GetFeaturedVideoList()
-        {
-            List<VideoDetails> video_detail_list = new List<VideoDetails>();
-            ReadOnlyCollection<IWebElement> videos = WebDriverTestBase.driver.FindElements(By.XPath("//div[contains(@class,'featured-video')]"));
-
-            foreach (IWebElement video in videos)
-            {
-                string video_title = video.FindInChildren(By.ClassName("title")).Text;
-                IWebElement video_link_ele = video.FindInChildren(By.TagName("a"));
-                video_detail_list.Add(new VideoDetails(video_link_ele, video_title));
-            }
-
-            return video_detail_list;
-        }
 
         public override void WaitForElements()
         {
