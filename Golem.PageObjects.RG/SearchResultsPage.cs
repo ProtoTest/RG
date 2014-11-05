@@ -19,20 +19,19 @@ namespace Golem.PageObjects.RG
     {
         protected Field Search_Field = new Field("Search box input", By.Id("p_lt_ctl00_sbSearchBox_txtWord"));
         protected Element SearchResult_Video_Section = new Element("Video Search Results", By.XPath("//h2//*[contains(text(),'Videos')]"));
-        protected List<VideoDetails> FeaturedVideos;
+        public List<VideoDetails> FeaturedVideos;
 
         public SearchResultsPage SearchFor(string text)
         {
             Search_Field.Text = text;
             Search_Field.SendKeys(Keys.Enter);
-
             return new SearchResultsPage();
         }
 
         public SearchResultsPage PopulateFeaturedVideosList()
         {
+            SearchResult_Video_Section.WaitUntil().Visible();
             FeaturedVideos = new FeaturedVideoListSection().VideoList;
-
             return this;
         }
 

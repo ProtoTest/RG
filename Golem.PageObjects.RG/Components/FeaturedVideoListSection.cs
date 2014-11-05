@@ -25,6 +25,12 @@ namespace Golem.PageObjects.RG.Components
             this.Video_Link = Video_Link;
             this.Video_Title = Video_Title;
         }
+
+        public VideoPlayingPage SelectVideo()
+        {
+            this.Video_Link.Click();
+            return new VideoPlayingPage();
+        }
     }
 
     public class FeaturedVideoListSection : BasePageObject
