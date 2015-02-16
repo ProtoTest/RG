@@ -30,19 +30,27 @@ namespace Golem.PageObjects.RG
         {
             UserAccount_Link.WaitUntil().Visible();
         }
-        
-        public YourVideosPageBase EnterAccount_YourVideos()
+
+        public YourVideos_FollowingPage EnterAccount_YourVideos()
         {
             UserAccount_Link.Click();
             YourVideos_Link.WaitUntil().Visible().Click();
-            return new YourVideosPageBase();
+            return new YourVideos_FollowingPage();
         }
 
         public InstructorVideosPage EnterInstruction(string instructor)
         {
-            Instruction.Click();
-            new Element("Instructor - " + instructor, By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]")).WaitUntil().Visible().Click();
+            driver.Sleep(1000);
+            Instruction.WaitUntil().Visible().MouseOver();
 
+            var instrcutorLink = new Element("Instructor - " + instructor,
+                By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]"));
+            for(var i=0;i<5&&!instrcutorLink.IsDisplayed(5);i++)
+            {
+                Instruction.Click();
+            }
+            instrcutorLink.Click();
+            driver.Sleep(1000);
             return new InstructorVideosPage(instructor);
         }
 
@@ -63,7 +71,7 @@ namespace Golem.PageObjects.RG
 
         public HomePage LogOut()
         {
-            UserAccount_Link.Click();
+            UserAccount_Link.WaitUntil().Visible().MouseOver();
             Signout_Link.WaitUntil().Visible().Click();
             return new HomePage();
         }

@@ -15,27 +15,28 @@ namespace Golem.Tests.RG
     [TestFixture, DependsOn(typeof(UserTests))]
     public class YourVideosTests : WebDriverTestBase
     {
-        //[Test, Category("Your Videos Tests")]
-        //public void EnterYourVideos()
-        //{
-        //    HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterAccount_YourVideos();
-        //}
+        [Test, Category("Your Videos Tests")]
+        public void EnterYourVideos()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.EnterAccount_YourVideos();
+        }
 
-        //[Test, Category("Your Videos Tests"), DependsOn("EnterYourVideos")]
-        //public void FollowInstructor()
-        //{
-        //    HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterInstruction("Woods").
-        //        FollowInstructor().
-        //        LoggedInHeader.EnterAccount_YourVideos().
-        //        EnterFollowing().VerifyFollowingInstructor("Woods");
+        [Test, Category("Your Videos Tests"), DependsOn("EnterYourVideos")]
+        public void FollowInstructor()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.EnterInstruction("Martin Chuck").
+                FollowInstructor().
+                LoggedInHeader.
+                EnterAccount_YourVideos().
+                VerifyFollowingInstructor("Martin Chuck");
 
-        //}
+        }
 
         //[Test, Category("Your Videos Tests"), DependsOn("FollowInstructor")]
         //public void UnFollowInstructor()

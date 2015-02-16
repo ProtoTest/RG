@@ -16,62 +16,18 @@ namespace Golem.PageObjects.RG
 {
     public class YourVideos_FollowingPage : YourVideosPageBase
     {
+        Element FollowingHeader = new Element(By.XPath("//div[@class='vm-title' and contains(text(),'{0}')]"));
+
         public YourVideos_FollowingPage VerifyFollowingInstructor(string instructor)
         {
-            // Iterate over all the instructor text elements found and see if any are visible
-            System.Collections.ObjectModel.ReadOnlyCollection <IWebElement> instructor_text_refs = WebDriverTestBase.driver.FindElements(ByE.PartialText(instructor));
-            if (instructor_text_refs.Count > 0)
-            {
-                bool found = false;
-                foreach (IWebElement element in instructor_text_refs)
-                {
-                    // ignore option elements
-                    if ((element.Displayed) && (!element.TagName.Equals("option")))
-                    {
-                        found = true;
-                    }
-                }
-
-                if(!found) WebDriverTestBase.AddVerificationError("Failed to verify Instructor " + instructor + " is on the Following page. No visible elements found.");
-            }
-
-            string video_xpath = string.Format("//*[contains(@class, 'featured-video') and .//*[contains(text(),'{0}')]]", instructor);
-            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> instructor_videos = WebDriverTestBase.driver.FindElements(By.XPath(video_xpath));
-            if (instructor_videos.Count <= 0)
-            {
-                WebDriverTestBase.AddVerificationError("Failed to verify Instructor " + instructor + " vidoes are displayed on the Following page");
-            }
-
+            FollowingHeader.WithParam(instructor).Verify().Visible();
             return this;
+
         }
 
         public YourVideos_FollowingPage VerifyNotFollowingInstructor(string instructor)
         {
-            // Attempt to find any element with 'text' of the instructor name in the DOM
-            // Iterate through all of them and make sure they are not visible
-            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> instructor_text_refs = WebDriverTestBase.driver.FindElements(ByE.PartialText(instructor));
-            if (instructor_text_refs.Count != 0)
-            {
-                bool found = false;
-                foreach (IWebElement element in instructor_text_refs)
-                {
-                    // ignore option elements
-                    if ((element.Displayed) && (!element.TagName.Equals("option")))
-                    {
-                        found = true;
-                    }
-                }
-
-                if (found) WebDriverTestBase.AddVerificationError("Failed to verify user is NOT following Instructor " + instructor + " on the Following page. Visible Elements found.");
-            }
-
-            string video_xpath = string.Format("//*[contains(@class, 'featured-video') and .//*[contains(text(),'{0}')]]", instructor);
-            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> instructor_videos = WebDriverTestBase.driver.FindElements(By.XPath(video_xpath));
-            if (instructor_videos.Count != 0)
-            {
-                WebDriverTestBase.AddVerificationError("Failed to verify Instructor " + instructor + " vidoes are NOT displayed on the Following page");
-            }
-
+            FollowingHeader.WithParam(instructor).Verify().Not().Visible();
             return this;
         }
 

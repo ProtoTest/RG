@@ -17,7 +17,7 @@ namespace Golem.PageObjects.RG
 {
     public class SearchResultsPage : BasePageObject
     {
-        protected Field Search_Field = new Field("Search box input", By.Id("p_lt_ctl00_sbSearchBox_txtWord"));
+        protected Field Search_Field = new Field("Search box input", By.CssSelector("input[id*=bSearchBox_txtWord]"));
         protected Element SearchResult_Video_Section = new Element("Video Search Results", By.XPath("//h2//*[contains(text(),'Videos')]"));
         public List<VideoDetails> FeaturedVideos;
 
@@ -28,12 +28,12 @@ namespace Golem.PageObjects.RG
             return new SearchResultsPage();
         }
 
-        public SearchResultsPage PopulateFeaturedVideosList()
-        {
-            SearchResult_Video_Section.WaitUntil().Visible();
-            FeaturedVideos = new FeaturedVideoListSection().VideoList;
-            return this;
-        }
+        //public SearchResultsPage PopulateFeaturedVideosList()
+        //{
+        //    SearchResult_Video_Section.WaitUntil().Visible();
+        //    FeaturedVideos = new FeaturedVideoListSection().VideoList;
+        //    return this;
+        //}
 
         public override void WaitForElements()
         {

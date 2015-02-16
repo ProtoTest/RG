@@ -19,8 +19,13 @@ namespace Golem.PageObjects.RG
     {
         protected string instructor;
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();
-        protected Button FollowInstructor_Button = new Button("Follow/UnFollow Instructor Button", By.Id("p_lt_ctl15_pageplaceholder_p_lt_ctl03_ExpertFollowing_plcUp_desktopLink"));
-        public readonly List<VideoDetails> FeaturedVideos = new FeaturedVideoListSection().VideoList;
+        protected Button FollowInstructor_Button = new Button("Follow Instructor Button", By.XPath("//a[contains(@id,'ExpertFollowing') and contains(text(),'Follow ')]"));
+
+        protected Button UnFollowInstructor_Button = new Button("UnFollow Instructor Button",
+            By.XPath("//a[contains(@id,'ExpertFollowing') and contains(text(),'Following')]"));
+        protected Button PrimaryCoach_Button = new Button("Primary Instructor Button", By.PartialLinkText("Primary Instructor"));
+
+       // public readonly List<VideoDetails> FeaturedVideos = new FeaturedVideoListSection().VideoList;
 
         public InstructorVideosPage(string instructor)
         {
@@ -29,32 +34,18 @@ namespace Golem.PageObjects.RG
 
         public InstructorVideosPage FollowInstructor()
         {
-            if (!FollowInstructor_Button.Text.Contains("FOLLOWING"))
-            {
-                FollowInstructor_Button.Verify().Text("FOLLOW");
-                FollowInstructor_Button.WaitUntil().Visible().Click();
-                FollowInstructor_Button.Verify().Text("FOLLOWING");
-            }
-            else
-            {
-                WebDriverTestBase.Log("Already following this instructor");
-            }
-
+           // if (FollowInstructor_Button.IsDisplayed(5))
+                FollowInstructor_Button.GetVisibleElement().Click();
             return this;
         }
 
         public InstructorVideosPage UnFollowInstructor()
         {
-            if (FollowInstructor_Button.Text.Contains("FOLLOWING"))
-            {
-                FollowInstructor_Button.Verify().Text("FOLLOWING");
-                FollowInstructor_Button.WaitUntil().Visible().Click();
-                FollowInstructor_Button.Verify().Text("FOLLOW");
-            }
-            else
-            {
-                WebDriverTestBase.Log("Already following instructor: " + instructor);
-            }
+         //   if (UnFollowInstructor_Button.IsDisplayed(5))
+         //   {
+                UnFollowInstructor_Button.GetVisibleElement().Click();
+         //   }
+            
 
             return this;
         }
@@ -63,7 +54,7 @@ namespace Golem.PageObjects.RG
         public override void WaitForElements()
         {
             new Element(instructor + " - Instructor Label", By.XPath(string.Format("//h1[contains(text(),'{0}')]", instructor))).Verify().Visible();
-            FollowInstructor_Button.Verify().Visible();
+     
         }
     }
 }

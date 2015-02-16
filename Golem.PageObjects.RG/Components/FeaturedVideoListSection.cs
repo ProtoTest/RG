@@ -33,34 +33,34 @@ namespace Golem.PageObjects.RG.Components
         }
     }
 
-    public class FeaturedVideoListSection : BasePageObject
-    {
-        public readonly List<VideoDetails> VideoList;
+    //public class FeaturedVideoListSection : BasePageObject
+    //{
+    //    public readonly List<VideoDetails> VideoList;
 
-        public FeaturedVideoListSection()
-        {
-            VideoList = GetFeaturedVideoList();
-        }
+    //    public FeaturedVideoListSection()
+    //    {
+    //        VideoList = GetFeaturedVideoList();
+    //    }
 
-        private List<VideoDetails> GetFeaturedVideoList()
-        {
-            List<VideoDetails> video_detail_list = new List<VideoDetails>();
-            ReadOnlyCollection<IWebElement> videos = WebDriverTestBase.driver.FindElements(By.XPath("//div[contains(@class,'featured-video')]"));
+    //    //private List<VideoDetails> GetFeaturedVideoList()
+    //    //{
+    //    //    List<VideoDetails> video_detail_list = new List<VideoDetails>();
+    //    //    ReadOnlyCollection<IWebElement> videos = WebDriverTestBase.driver.FindElements(By.XPath("//div[contains(@class,'featured-video')]"));
 
-            foreach (IWebElement video in videos)
-            {
-                string video_title = video.FindInChildren(By.ClassName("title")).Text;
-                IWebElement video_link_ele = video.FindInChildren(By.TagName("a"));
-                video_detail_list.Add(new VideoDetails(video_link_ele, video_title));
-            }
+    //    //    foreach (IWebElement video in videos)
+    //    //    {
+    //    //        string video_title = video.FindInChildren(By.ClassName("title")).Text;
+    //    //        IWebElement video_link_ele = video.FindInChildren(By.TagName("a"));
+    //    //        video_detail_list.Add(new VideoDetails(video_link_ele, video_title));
+    //    //    }
 
-            return video_detail_list;
-        }
+    //    //    return video_detail_list;
+    //    //}
 
-        public override void WaitForElements() 
-        {
-            new Element("Featured videos div section", By.ClassName("featured-videos")).Verify().Visible();
-        }
+    //    public override void WaitForElements() 
+    //    {
+    //        new Element("Featured videos div section", By.ClassName("featured-videos")).Verify().Visible();
+    //    }
         
-    }
+    //}
 }
