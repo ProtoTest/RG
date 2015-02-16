@@ -16,7 +16,7 @@ namespace Golem.Tests.RG
 
         public CommentsTests()
         {
-            UserTests.login_join_account_email = "prototest_05004910_1@mailinator.com";
+            Users.User1.email = "prototest_05004910_1@mailinator.com";
         }
 
         [Test, Category("Comments Tests")]
@@ -24,12 +24,12 @@ namespace Golem.Tests.RG
         {
             string video_to_search_for = "TW-Video";
             string comment_to_add = "Comment: " + Common.GetRandomString();
-            string display_name = UserTests.login_join_account_email;
+            string display_name = Users.User1.email;
 
             // Search and navigate to first video
             SearchResultsPage search_results_page = HomePage.OpenHomePage().
                GotoLoginJoinPage().
-               Login(UserTests.login_join_account_email, UserTests.account_password).
+               Login(Users.User1.email, Users.User1.password).
                LoggedInHeader.SearchFor(video_to_search_for);
 
             // Store teh first video and get its title
@@ -47,12 +47,12 @@ namespace Golem.Tests.RG
         {
             string video_to_search_for = "TW-Video";
             string comment_to_add = "Comment: " + Common.GetRandomString();
-            string display_name = UserTests.login_join_account_email;
+            string display_name = Users.User1.email;
 
             // Search and navigate to first video
             SearchResultsPage search_results_page = HomePage.OpenHomePage().
                GotoLoginJoinPage().
-               Login(UserTests.login_join_account_email, UserTests.account_password).
+               Login(Users.User1.email, Users.User1.password).
                LoggedInHeader.SearchFor(video_to_search_for);
 
             // Store the first video and get its title

@@ -14,13 +14,13 @@ namespace Golem.PageObjects.RG
 {
     public class LoginJoinPage : BasePageObject
     {
-        Element LoginEmail_Field = new Element("Login Email Field", By.Id("p_lt_ctl00_RGLogonMiniFormBasic_loginElem_UserName"));
-        Element LoginPassword_Field = new Element("Login Password Field", By.Id("p_lt_ctl00_RGLogonMiniFormBasic_loginElem_Password"));
-        Button LoginContinue_Button = new Button("Login Continue Button", By.Id("p_lt_ctl00_RGLogonMiniFormBasic_loginElem_btnLogon"));
+        Element LoginEmail_Field = new Element("Login Email Field", By.CssSelector("input[id*=RGLogonMiniFormBasic_loginElem_UserName]"));
+        Element LoginPassword_Field = new Element("Login Password Field", By.CssSelector("input[id*=RGLogonMiniFormBasic_loginElem_Password]"));
+        Button LoginContinue_Button = new Button("Login Continue Button", By.CssSelector("input[id*=RGLogonMiniFormBasic_loginElem_btnLogon]"));
 
-        Element CreateAccountEmail_Field = new Element("Create Account Email Field", By.Id("p_lt_ctl01_RGRegistrationMiniForm_txtEmail"));
-        Element CreateAccountPassword_Field = new Element("Create Account Passwoord Field", By.Id("p_lt_ctl01_RGRegistrationMiniForm_passStrength"));
-        Button CreateAccount_Button = new Button("Create Account Button", By.Id("p_lt_ctl01_RGRegistrationMiniForm_btnOk"));
+        Element CreateAccountEmail_Field = new Element("Create Account Email Field", By.CssSelector("input[id*=RGRegistrationMiniForm_txtEmail]"));
+        Element CreateAccountPassword_Field = new Element("Create Account Passwoord Field", By.CssSelector("input[id*=RGRegistrationMiniForm_passStrength]"));
+        Button CreateAccount_Button = new Button("Create Account Button", By.CssSelector("input[id*=RGRegistrationMiniForm_btnOk]"));
 
         public HomePage CreateAccount(string email, string password)
         {

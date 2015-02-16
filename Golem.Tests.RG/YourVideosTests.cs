@@ -20,7 +20,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterAccount_YourVideos();
         }
 
@@ -29,7 +29,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterInstruction("Woods").
                 FollowInstructor().
                 LoggedInHeader.EnterAccount_YourVideos().
@@ -42,7 +42,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterInstruction("Woods").
                 UnFollowInstructor().
                 LoggedInHeader.EnterAccount_YourVideos().
@@ -56,7 +56,7 @@ namespace Golem.Tests.RG
             Golem.PageObjects.RG.Components.VideoDetails FirstInstructionVideo =
                 HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterInstruction("Woods").FeaturedVideos.First();
 
             // Click to start playing the video and add it to the user queue
@@ -66,7 +66,7 @@ namespace Golem.Tests.RG
             // Log Back in and verify the video is in the user queue
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterAccount_YourVideos().EnterQueue().VerifyVideoOnPage(FirstInstructionVideo.Video_Title);
         }
 
@@ -77,7 +77,7 @@ namespace Golem.Tests.RG
             Golem.PageObjects.RG.Components.VideoDetails FirstInstructionVideo =
                 HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterInstruction("Woods").FeaturedVideos.First();
 
             // Click to start playing the video and add it to the user queue
@@ -87,7 +87,7 @@ namespace Golem.Tests.RG
             // Log Back in and verify the video is in the user queue
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterAccount_YourVideos().EnterFavorites().VerifyVideoOnPage(FirstInstructionVideo.Video_Title);
         }
     }

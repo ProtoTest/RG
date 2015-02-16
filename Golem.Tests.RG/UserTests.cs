@@ -14,17 +14,13 @@ namespace Golem.Tests.RG
     [TestFixture]
     public class UserTests : WebDriverTestBase
     {
-        public static string login_join_account_email = "prototest_" + Common.GetRandomString() + "_1@mailinator.com";
-        public static string subscribe_account_email = "prototest_" + Common.GetRandomString() + "_2@mailinator.com";
-        public static string account_password = Config.GetConfigValue("Password", "prototest123");
 
         [Test, Category("User Test")]
         public void VerifyApplicationUp()
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(Config.GetConfigValue("GlobalAdmin", ""),
-                      account_password).LoggedInHeader.LogOut();
+                Login(Users.User1.email,Users.User1.password).LoggedInHeader.LogOut();
         }
 
         [Test, Category("User Test")]
@@ -33,7 +29,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                CreateAccount(login_join_account_email, account_password);
+                CreateAccount(Users.User2.email, Users.User1.password);
         }
 
         [Test, Category("User Test")]
@@ -45,8 +41,8 @@ namespace Golem.Tests.RG
                 Subscribe(JoinPage.SEX.Male,
                           JoinPage.AGE_RANGE.Range_30_50,
                           JoinPage.SCORE.Scratch,
-                          subscribe_account_email, 
-                          account_password).LoggedInHeader.LogOut();
+                          Users.RandomUser2.email, 
+                          Users.RandomUser2.password).LoggedInHeader.LogOut();
         }
 
     }

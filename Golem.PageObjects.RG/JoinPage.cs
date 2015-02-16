@@ -28,9 +28,9 @@ namespace Golem.PageObjects.RG
         Button Question_Submit_Btn = new Button("Questions submit button", ByE.PartialAttribute("button", "class", "btn-step3"));
 
         // Username/Password Modal
-        Field Email_Field = new Field("Subscribe > Email field", By.Id("p_lt_ctl05_RGJoinSurvey_txtEmail"));
-        Field Password_Field = new Field("Subscribe > Password field", By.Id("p_lt_ctl05_RGJoinSurvey_passStrength"));
-        Button StartLearning_Button = new Button("Subscribe > Start Learning Button", By.Id("p_lt_ctl05_RGJoinSurvey_btnOk"));
+        Field Email_Field = new Field("Subscribe > Email field", By.CssSelector("input[id*=RGJoinSurvey_txtEmail]"));
+        Field Password_Field = new Field("Subscribe > Password field", By.CssSelector("input[id*=RGJoinSurvey_passStrength]"));
+        Button StartLearning_Button = new Button("Subscribe > Start Learning Button", By.CssSelector("input[id*=RGJoinSurvey_btnOk]"));
 
         private void EnterSubscriptionQuestions(SEX sex, AGE_RANGE age_range, SCORE score)
         {
@@ -69,7 +69,7 @@ namespace Golem.PageObjects.RG
             Common.Delay(1000);
             Question_3_Score.WaitUntil().Visible().Click();
             new Element(score_str + " option", By.LinkText(score_str)).WaitUntil().Visible().Click();
-
+            Common.Delay(1000);
             Question_Submit_Btn.WaitUntil().Visible().Click();
             Common.Delay(1000);
         }

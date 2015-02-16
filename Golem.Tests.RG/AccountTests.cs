@@ -21,7 +21,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
                 Upgrade_To_RG_Plus().
                 SelectMembership(BecomeMemberPage.MEMBERSHIP_TYPE.ANNUAL).
@@ -30,7 +30,7 @@ namespace Golem.Tests.RG
                 SelectTestPayment().
                 ContinueToNextStep().
                 PlaceOrder().
-                VerifyOrder(UserTests.login_join_account_email);
+                VerifyOrder(Users.User1.email);
         }   
 
         [Test, Category("Account Tests")]
@@ -40,10 +40,10 @@ namespace Golem.Tests.RG
 
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
                 UpdateAccountSettings(DisplayNameUT, null, null, null).
-                VerifyAccountSettingsInfo(DisplayNameUT, UserTests.login_join_account_email);
+                VerifyAccountSettingsInfo(DisplayNameUT, Users.User1.email);
         }
 
         [Test, Category("Account Tests")]
@@ -54,20 +54,20 @@ namespace Golem.Tests.RG
 
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
-                UpdateAccountSettings(null, new_account_email, UserTests.account_password, new_account_password).
+                UpdateAccountSettings(null, new_account_email, Users.User1.password, new_account_password).
                 VerifyAccountSettingsInfo(null, new_account_email).
                 LoggedInHeader.LogOut();
 
             // Update the login email and password
-            UserTests.login_join_account_email = new_account_email;
-            UserTests.account_password = new_account_password;
+            Users.User1.email = new_account_email;
+            Users.User1.password = new_account_password;
 
             // Login with the new credentials
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, new_account_password).
                 LoggedInHeader.LogOut();
         }
 
@@ -84,7 +84,7 @@ namespace Golem.Tests.RG
 
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
                 EditPreferredPayment(name, test_cc, exp_month, exp_year, ccv, address).
                 VerifyPreferredPayment(name, cc_last_four, exp_month, exp_year, address);
@@ -108,7 +108,7 @@ namespace Golem.Tests.RG
 
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().EditPreferredPayment(name, test_cc, exp_month, exp_year, ccv, address);
 
             // Verify the initial card label text and address was updated
@@ -122,7 +122,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
                 DeletePreferredPayment().
                 VerifyPreferredPayment_DropDown_Text(NoPaymentAddedText).LoggedInHeader.LogOut();
@@ -136,7 +136,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
                 AddShippingAddress("1999 Broadway", null, "Denver", "Colorado", "80222", "USA").
                 VerifyCurrentSelectedShippingAddress("1999 Broadway");
@@ -147,7 +147,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                GotoLoginJoinPage().
-               Login(UserTests.login_join_account_email, UserTests.account_password).
+               Login(Users.User1.email, Users.User1.password).
                LoggedInHeader.EnterYourAccount().
                EditShippingAddress("1999 Broadway", "123 Fake St", null, "Littleton", "Colorado", "80127", "USA").
                VerifyCurrentSelectedShippingAddress("123 Fake St"); ;
@@ -163,7 +163,7 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                Login(UserTests.login_join_account_email, UserTests.account_password).
+                Login(Users.User1.email, Users.User1.password).
                 LoggedInHeader.EnterYourAccount().
                 VerifyPreferredPayment_DropDown_Text(NoPaymentAddedText);
         }
