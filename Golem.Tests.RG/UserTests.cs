@@ -29,7 +29,8 @@ namespace Golem.Tests.RG
         {
             HomePage.OpenHomePage().
                 GotoLoginJoinPage().
-                CreateAccount(Users.User2.email, Users.User1.password);
+                CreateAccount(Users.RandomUser1.email, Users.RandomUser1.password);
+
         }
 
         [Test, Category("User Test")]

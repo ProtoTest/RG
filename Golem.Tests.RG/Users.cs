@@ -11,6 +11,11 @@ namespace Golem.Tests.RG
     {
         public static User User1 = new User("RG_user1@mailinator.com","Test123!");
         public static User User2 = new User("RG_user2@mailinator.com","Test123!");
+
+        public static User RGPlus_User1 = new User("RGPlus_user1@mailinator.com", "Test123!");
+        public static User RGPlus_User2 = new User("RGPlus_user2@mailinator.com", "Test123!");
+        
+        
         public static User RandomUser1 = new User("RG_user" + Common.GetRandomString() + "_1@mailinator.com","Test123!");
         public static User RandomUser2 = new User("RG_user" + Common.GetRandomString() + "_2@mailinator.com", "Test123!");
 

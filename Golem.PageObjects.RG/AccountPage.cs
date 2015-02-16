@@ -30,18 +30,18 @@ namespace Golem.PageObjects.RG
         Button UpgradeToRGPlus_Button = new Button("Upgrade to RG+ button", By.XPath("//a[contains(text(), 'Upgrade to RG+')]"));
 
         // Account Settings set labels
-        Element AccountSettings_NickName_Label = new Element("Account Settings Nickname Label", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_lblNickName"));
-        Element AccountSettings_Email_Label = new Element("Account Settings Email Label", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_lblUserName"));
+        Element AccountSettings_NickName_Label = new Element("Account Settings Nickname Label", By.CssSelector("input[id*=RGChangePassword_lblNickName]"));
+        Element AccountSettings_Email_Label = new Element("Account Settings Email Label", By.CssSelector("input[*=RGChangePassword_lblUserName]"));
         Link AccountSettings_Edit_Link = new Link("Account Settings Edit Link", By.XPath("//*[@class='account-info']//a[contains(text(),'Edit')]"));
 
         // Account Settings form fields
-        Field DisplayName_Field = new Field("Display Name Field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_NickNametextbox"));
-        Field Email_Field = new Field("Email Field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_txtEmail"));
-        Field OldPassword_Field = new Field("Old Password Field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_txtOldPassword"));
-        Field NewPassword_Field = new Field("New Password Field", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_Password"));
+        Field DisplayName_Field = new Field("Display Name Field", By.CssSelector("input[id*=RGChangePassword_NickNametextbox]"));
+        Field Email_Field = new Field("Email Field", By.CssSelector("input[id*=RGChangePassword_txtEmail]"));
+        Field OldPassword_Field = new Field("Old Password Field", By.CssSelector("input[id*=RGChangePassword_txtOldPassword]"));
+        Field NewPassword_Field = new Field("New Password Field", By.CssSelector("input[*=RGChangePassword_Password]"));
 
         Button AccountSettings_Cancel_Button = new Button("Cancel Button", By.XPath("//*[@class='edit-account']//a[contains(text(),'Cancel')]"));
-        Button AccountSettings_Save_Button = new Button("Save Button", By.Id("p_lt_ctl14_pageplaceholder_p_lt_ctl02_pageplaceholder_p_lt_ctl02_RGChangePassword_btnOk"));
+        Button AccountSettings_Save_Button = new Button("Save Button", By.CssSelector("input[id*=RGChangePassword_btnOk]"));
         
         
         Button Delete_Button = new Button("Delete Button", ByE.PartialText("Delete"));
