@@ -19,6 +19,9 @@ namespace Golem.PageObjects.RG
         HeaderBase BaseHeader = new HeaderBase();
         Element Join_Link = new Element("JOIN Link", By.XPath("//a[text()='Join']"));
         Element Login_Link = new Element("LOG IN Link", By.XPath("//a[text()='Log In']"));
+        Link RGLive_Hover = new Link(By.CssSelector("li[class=nav-live] a"));
+        Link RGLive_Link = new Link(By.CssSelector("a[href*=rg-live]"));
+        Link RGTV_Link = new Link(By.LinkText("RG RV"));
 
         public LoginJoinPage GotoLoginJoinPage()
         {
@@ -30,6 +33,23 @@ namespace Golem.PageObjects.RG
         {
             Join_Link.Click();
             return new JoinPage();
+        }
+
+        public BecomeMemberPage OpenRGLive()
+        {
+            driver.Sleep(1000);
+            RGLive_Hover.WaitUntil().Visible().Click();
+            driver.Sleep(1000);
+            RGLive_Link.WaitUntil().Visible().Click();
+            RGLive_Link.WaitUntil().Not().Visible();
+            return new BecomeMemberPage();
+        }
+
+        public BecomeMemberPage OpenRGTV()
+        {
+            RGLive_Hover.MouseOver();
+            RGTV_Link.Click();
+            return new BecomeMemberPage();
         }
 
         public override void WaitForElements()

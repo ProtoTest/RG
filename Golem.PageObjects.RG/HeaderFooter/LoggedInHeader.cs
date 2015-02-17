@@ -24,7 +24,11 @@ namespace Golem.PageObjects.RG
         Link YourVideos_Link = new Link("Your Videos -- Link", By.PartialLinkText("Your Videos"));
         Link YourProfile_Link = new Link("Your Profile -- Link", By.PartialLinkText("Your Profile"));
         Link Account_Link = new Link("Account -- Link", By.PartialLinkText("Account"));
-        Link Signout_Link = new Link("Sign Out -- Link", By.PartialLinkText("Sign Out")); 
+        Link Signout_Link = new Link("Sign Out -- Link", By.PartialLinkText("Sign Out"));
+        Link RGLive_Hover = new Link(By.CssSelector("li[class=nav-live] a"));
+        Link RGLive_Link = new Link(By.CssSelector("a[href*=rg-live]"));
+        Link RGTV_Link = new Link(By.LinkText("RG RV"));
+
 
         public override void WaitForElements()
         {
@@ -54,14 +58,33 @@ namespace Golem.PageObjects.RG
             return new InstructorVideosPage(instructor);
         }
 
-        /*
-        public YourProfilePage EnterAccount_YourProfile()
+        public BecomeMemberPage OpenRGLiveAsNonPlus()
         {
-            UserAccount_Link.Click();
-            YourProfile_Link.WaitUntil().Visible().Click();
-            return new YourProfilePage();
+            driver.Sleep(1000);
+            RGLive_Hover.WaitUntil().Visible().Click();
+            driver.Sleep(1000);
+            RGLive_Link.WaitUntil().Visible().Click();
+            RGLive_Link.WaitUntil().Not().Visible();
+            return new BecomeMemberPage();
         }
-        */
+
+        public RGLivePage OpenRGLiveAsPlusMember()
+        {
+            driver.Sleep(1000);
+            RGLive_Hover.WaitUntil().Visible().Click();
+            driver.Sleep(1000);
+            RGLive_Link.WaitUntil().Visible().Click();
+            RGLive_Link.WaitUntil().Not().Visible();
+            return new RGLivePage();
+        }
+
+        public RGTVPage OpenRGTVAsPlus()
+        {
+            RGLive_Hover.MouseOver();
+            RGTV_Link.Click();
+            return new RGTVPage();
+        }
+
         public AccountPage EnterYourAccount()
         {
             UserAccount_Link.Click();

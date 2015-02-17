@@ -91,6 +91,8 @@
     <Compile Include="AccountTests.cs" />
     <Compile Include="CommentsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RGLiveTests.cs" />
+    <Compile Include="RGPlusVideoTests.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="UserTests.cs" />
     <Compile Include="YourVideosTests.cs" />

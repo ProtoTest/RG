@@ -22,6 +22,9 @@ namespace Golem.PageObjects.RG
         Link AddToQueue_Link = new Link("Add video to queue link", By.XPath("//*[@id='video-container']//a[contains(@class,'add')]"));
         Link AddToFavorites_Link = new Link("Add video to favorites", By.XPath("//*[@id='video-container']//a[contains(@class,'favorite')]"));
         Link ShareVideo_Link = new Link("Share", By.XPath("//*[@id='video-container']//a[@class='share-video']"));
+        Element LatestCommentContainer = new Element(By.XPath("//ul[@class='comments-list']/li[1]"));
+        Element CommentName = new Element(By.ClassName("name"));
+        Element CommentText = new Element(By.XPath(".//div[contains(@class,'comment-text')]/p"));
 
         Field MainComment_Field = new Field("Add new comment thread field", By.XPath("//*[@class='comment-input']//input"));
         Button Main_AddComment_Button = new Button("Add new comment thread button", By.XPath("//*[@class='comment-input']//a"));
@@ -84,11 +87,9 @@ namespace Golem.PageObjects.RG
 
         public VideoPlayingPage VerifyLatestComment(string display_name, string comment_text)
         {
-            Element DisplayName = new Element("Latest Comment display name", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'comment-container')]//span[contains(@class,'name')]"));
-            Element CommentText = new Element("Latest Comment text", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'comment-container')]//*[@class='comment-text']"));
-
-            DisplayName.Verify().Visible().Verify().Text(display_name);
-            CommentText.Verify().Visible().Verify().Text(comment_text);
+            driver.Sleep(2000);
+            LatestCommentContainer.FindElement(CommentName).Verify().Visible().Verify().Text(display_name);
+            LatestCommentContainer.FindElement(CommentText).Verify().Visible().Verify().Text(comment_text);
 
             return this;
         }

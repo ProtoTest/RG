@@ -15,52 +15,44 @@ using System.Collections.ObjectModel;
 
 namespace Golem.PageObjects.RG.Components
 {
-    public class VideoDetails
+    public class FeaturedVideoListSection : BasePageObject
     {
-        public readonly IWebElement Video_Link;
-        public readonly string Video_Title;
+      //  public Element Container = new Element(By.ClassName("div-featured-videos"));
+        public ElementCollection Videos = new ElementCollection(By.ClassName("featured-video"));
 
-        public VideoDetails(IWebElement Video_Link, string Video_Title)
+        public Element FirstVideo()
         {
-            this.Video_Link = Video_Link;
-            this.Video_Title = Video_Title;
+            return Videos.First();
         }
 
-        public VideoPlayingPage SelectVideo()
+        public VideoPlayingPage OpenFirstVideo()
         {
-            this.Video_Link.Click();
+            Videos.FirstOrDefault().Click();
             return new VideoPlayingPage();
         }
+
+        public LoginJoinPage OpenFirstVideoAsAnonUser()
+        {
+            Videos.FirstOrDefault().Click();
+            return new LoginJoinPage();
+        }
+
+        public RGPlusUpsellPage OpenFirstVideoTORGUpsell()
+        {
+            Videos.FirstOrDefault().Click();
+            return new RGPlusUpsellPage();
+        }
+
+        public Element VideoWithTitle(string name)
+        {
+            return Videos.First();
+        }
+
+        public override void WaitForElements()
+        {
+     
+        }
+
+
     }
-
-    //public class FeaturedVideoListSection : BasePageObject
-    //{
-    //    public readonly List<VideoDetails> VideoList;
-
-    //    public FeaturedVideoListSection()
-    //    {
-    //        VideoList = GetFeaturedVideoList();
-    //    }
-
-    //    //private List<VideoDetails> GetFeaturedVideoList()
-    //    //{
-    //    //    List<VideoDetails> video_detail_list = new List<VideoDetails>();
-    //    //    ReadOnlyCollection<IWebElement> videos = WebDriverTestBase.driver.FindElements(By.XPath("//div[contains(@class,'featured-video')]"));
-
-    //    //    foreach (IWebElement video in videos)
-    //    //    {
-    //    //        string video_title = video.FindInChildren(By.ClassName("title")).Text;
-    //    //        IWebElement video_link_ele = video.FindInChildren(By.TagName("a"));
-    //    //        video_detail_list.Add(new VideoDetails(video_link_ele, video_title));
-    //    //    }
-
-    //    //    return video_detail_list;
-    //    //}
-
-    //    public override void WaitForElements() 
-    //    {
-    //        new Element("Featured videos div section", By.ClassName("featured-videos")).Verify().Visible();
-    //    }
-        
-    //}
 }

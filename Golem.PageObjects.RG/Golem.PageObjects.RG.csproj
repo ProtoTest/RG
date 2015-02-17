@@ -89,11 +89,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountPage.cs" />
+    <Compile Include="BaseTopicPage.cs" />
     <Compile Include="BecomeMemberPage.cs" />
     <Compile Include="Components\FeaturedVideoListSection.cs" />
+    <Compile Include="Components\Video.cs" />
     <Compile Include="FeaturedProductInfo.cs" />
     <Compile Include="HeaderFooter\Footer.cs" />
     <Compile Include="HeaderFooter\HeaderBase.cs" />
+    <Compile Include="RGLivePage.cs" />
+    <Compile Include="RGPlusUpsellPage.cs" />
+    <Compile Include="RGTVPage.cs" />
     <Compile Include="SearchResultsPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="InstructorVideosPage.cs" />

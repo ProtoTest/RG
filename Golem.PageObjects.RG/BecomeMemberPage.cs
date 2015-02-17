@@ -18,7 +18,7 @@ namespace Golem.PageObjects.RG
     {
         public enum MEMBERSHIP_TYPE { ANNUAL, LIFETIME, MONTHLY };
 
-        public LoggedInHeader LoggedInHeader = new LoggedInHeader();
+        
         public Button Annual_Membership_Button = new Button("Annual Membership purchase button", ByE.PartialAttribute("input", "value", "Annual Membership"));
         public Button Lifetime_Membership_Button = new Button("Lifetime Membership purchase button", ByE.PartialAttribute("input", "value", "Lifetime Membership"));
         public Button Monthly_Membership_Button = new Button("Monthly Membership purchase button", ByE.PartialAttribute("input", "value", "Monthly Membership"));

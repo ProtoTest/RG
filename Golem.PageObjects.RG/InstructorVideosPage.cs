@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 namespace Golem.PageObjects.RG
 {
-    public class InstructorVideosPage : BasePageObject
+    public class InstructorVideosPage : BaseTopicPage
     {
         protected string instructor;
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();

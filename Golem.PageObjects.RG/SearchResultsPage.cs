@@ -19,7 +19,11 @@ namespace Golem.PageObjects.RG
     {
         protected Field Search_Field = new Field("Search box input", By.CssSelector("input[id*=bSearchBox_txtWord]"));
         protected Element SearchResult_Video_Section = new Element("Video Search Results", By.XPath("//h2//*[contains(text(),'Videos')]"));
-        public List<VideoDetails> FeaturedVideos;
+
+        public FeaturedVideoListSection Videos
+        {
+            get { return new FeaturedVideoListSection(); }
+        }
 
         public SearchResultsPage SearchFor(string text)
         {
@@ -27,13 +31,6 @@ namespace Golem.PageObjects.RG
             Search_Field.SendKeys(Keys.Enter);
             return new SearchResultsPage();
         }
-
-        //public SearchResultsPage PopulateFeaturedVideosList()
-        //{
-        //    SearchResult_Video_Section.WaitUntil().Visible();
-        //    FeaturedVideos = new FeaturedVideoListSection().VideoList;
-        //    return this;
-        //}
 
         public override void WaitForElements()
         {
