@@ -58,6 +58,22 @@ namespace Golem.PageObjects.RG
             return new InstructorVideosPage(instructor);
         }
 
+        public BaseTopicPage EnterTopic(string instructor)
+        {
+            driver.Sleep(1000);
+            Instruction.WaitUntil().Visible().MouseOver();
+
+            var instrcutorLink = new Element("Instructor - " + instructor,
+                By.XPath("//a[contains(text(),'" + instructor + "') and contains(@href,'instruction')]"));
+            for (var i = 0; i < 5 && !instrcutorLink.IsDisplayed(5); i++)
+            {
+                Instruction.Click();
+            }
+            instrcutorLink.Click();
+            driver.Sleep(1000);
+            return new BaseTopicPage();
+        }
+
         public BecomeMemberPage OpenRGLiveAsNonPlus()
         {
             driver.Sleep(1000);

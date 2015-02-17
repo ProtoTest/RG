@@ -31,7 +31,7 @@ namespace Golem.PageObjects.RG
 
         public BaseTopicPage Follow()
         {
-            Follow_Button.Click();
+            Follow_Button.WaitUntil().Present().GetVisibleElement().Click();
             return this;
         }
 

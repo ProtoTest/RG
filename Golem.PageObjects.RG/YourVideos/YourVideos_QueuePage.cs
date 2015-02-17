@@ -16,9 +16,11 @@ namespace Golem.PageObjects.RG
 {
     public class YourVideos_QueuePage : YourVideosPageBase
     {
+        public Element QueueButtonSelected = new Element(By.CssSelector("div[class~=active] span[class=icon-icon-plus]"));
         public override void WaitForElements()
         {
-            Assert.Contains(WebDriverTestBase.driver.Url, "queue", "Failed to verify webdriver is on the user 'queue' page");
+            //Assert.Contains(WebDriverTestBase.driver.Url, "queue", "Failed to verify webdriver is on the user 'queue' page");
+            QueueButtonSelected.Verify().Visible();
         }
     }
 }

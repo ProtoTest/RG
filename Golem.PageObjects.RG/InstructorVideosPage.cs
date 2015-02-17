@@ -21,7 +21,7 @@ namespace Golem.PageObjects.RG
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();
         protected Button FollowInstructor_Button = new Button("Follow Instructor Button", By.XPath("//a[contains(@id,'ExpertFollowing') and contains(text(),'Follow ')]"));
 
-        protected Button UnFollowInstructor_Button = new Button("UnFollow Instructor Button",
+        protected Button UnFollowInstructor_Button = new Button("UnFollowTopic Instructor Button",
             By.XPath("//a[contains(@id,'ExpertFollowing') and contains(text(),'Following')]"));
         protected Button PrimaryCoach_Button = new Button("Primary Instructor Button", By.PartialLinkText("Primary Instructor"));
 
@@ -34,19 +34,13 @@ namespace Golem.PageObjects.RG
 
         public InstructorVideosPage FollowInstructor()
         {
-           // if (FollowInstructor_Button.IsDisplayed(5))
-                FollowInstructor_Button.GetVisibleElement().Click();
+            FollowInstructor_Button.GetVisibleElement().Click();
             return this;
         }
 
         public InstructorVideosPage UnFollowInstructor()
         {
-         //   if (UnFollowInstructor_Button.IsDisplayed(5))
-         //   {
-                UnFollowInstructor_Button.GetVisibleElement().Click();
-         //   }
-            
-
+            UnFollowInstructor_Button.GetVisibleElement().Click();
             return this;
         }
 

@@ -34,62 +34,60 @@ namespace Golem.Tests.RG
                 FollowInstructor().
                 LoggedInHeader.
                 EnterAccount_YourVideos().
-                VerifyFollowingInstructor("Martin Chuck");
+                EnterFollowing().
+                VerifyFollowing("Martin Chuck").
+                UnFollowInstructor("Martin Chuck").
+                VerifyNotFollowing("Martin Chuck");
 
         }
 
-        //[Test, Category("Your Videos Tests"), DependsOn("FollowInstructor")]
-        //public void UnFollowInstructor()
-        //{
-        //    HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterInstruction("Woods").
-        //        UnFollowInstructor().
-        //        LoggedInHeader.EnterAccount_YourVideos().
-        //        EnterFollowing().VerifyNotFollowingInstructor("Woods");
-        //}
+        [Test, Category("Your Videos Tests"), DependsOn("EnterYourVideos")]
+        public void FollowTopic()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.EnterTopic("Chipping").Follow().
+                LoggedInHeader.
+                EnterAccount_YourVideos().
+                EnterFollowing().
+                UnFollowTopic("Chipping & Pitching").
+                VerifyNotFollowing("Chipping & Pitching");
 
-        //[Test, Category("Your Videos Tests")]
-        //public void QueueVideoTest()
-        //{
-        //    // Enter Tiger Woods Instruction page, get his list of videos and grab the first one from the video list
-        //    Golem.PageObjects.RG.Components.VideoDetails FirstInstructionVideo =
-        //        HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterInstruction("Woods").FeaturedVideos.First();
 
-        //    // Click to start playing the video and add it to the user queue
-        //    FirstInstructionVideo.Video_Link.Click();
-        //    HomePage page = new VideoPlayingPage().AddToQueue().LoggedInHeader.LogOut();
+        }
 
-        //    // Log Back in and verify the video is in the user queue
-        //    HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterAccount_YourVideos().EnterQueue().VerifyVideoOnPage(FirstInstructionVideo.Video_Title);
-        //}
+        [Test, Category("Your Videos Tests")]
+        public void QueueVideoTest()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.SearchFor("Golf Swing Tempo")
+                .Videos.OpenFirstVideo()
+                .AddToQueue()
+                .LoggedInHeader.LogOut();
 
-        //[Test, Category("Your Videos Tests")]
-        //public void FavoritesVideoTest()
-        //{
-        //    // Enter Tiger Woods Instruction page, get his list of videos and grab the first one from the video list
-        //    Golem.PageObjects.RG.Components.VideoDetails FirstInstructionVideo =
-        //        HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterInstruction("Woods").FeaturedVideos.First();
+            // Log Back in and verify the video is in the user queue
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.EnterAccount_YourVideos().EnterQueue().VerifyVideoOnPage("Golf Swing Tempo");
+        }
 
-        //    // Click to start playing the video and add it to the user queue
-        //    FirstInstructionVideo.Video_Link.Click();
-        //    HomePage page = new VideoPlayingPage().AddToFavorites().LoggedInHeader.LogOut();
+        [Test, Category("Your Videos Tests")]
+        public void FavoritesVideoTest()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.SearchFor("Create width in the backswing")
+                .Videos.OpenFirstVideo().AddToFavorites().LoggedInHeader.LogOut();
 
-        //    // Log Back in and verify the video is in the user queue
-        //    HomePage.OpenHomePage().
-        //        GotoLoginJoinPage().
-        //        Login(Users.User1.email, Users.User1.password).
-        //        LoggedInHeader.EnterAccount_YourVideos().EnterFavorites().VerifyVideoOnPage(FirstInstructionVideo.Video_Title);
-        //}
+            HomePage.OpenHomePage().
+              GotoLoginJoinPage().
+              Login(Users.User1.email, Users.User1.password).
+              LoggedInHeader.EnterAccount_YourVideos().EnterFavorites().VerifyVideoOnPage("Create width in the backswing");
+        }
     }
 }
