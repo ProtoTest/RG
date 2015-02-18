@@ -19,14 +19,28 @@ namespace Golem.PageObjects.RG
         Element FollowingHeader = new Element(By.XPath("//div[@class='vm-title' and contains(text(),'{0}')]"));
 
         Element ContainerForName = new Element(By.XPath("//div[@class='row' and .//div[contains(text(),'{0}')]]"));
-
-
-
         Element EditButton = new Element(By.ClassName("icon-icon-x"));
         Element UnfollowTopicButton = new Element(By.ClassName("follow"));
         Element UnfollowInstructorButton = new Element(By.ClassName("following-change-primary"));
         Element PrimaryButton = new Element(By.ClassName("primary-expert"));
+        Element PrimaryCoachLabel = new Element(By.XPath("//div[@class='video-module' and .//span[contains(text(),'Your Primary Coach')]]//div[@class='vm-title']"));
+        Element CoachDropdownOption = new Element(By.XPath("//a[@class='primary-expert' and contains(text(),'{0}')]"));
+        Element PrimaryCoachDropdown = new Element(By.CssSelector("a[id*=MyPrimaryCoach_selectedExpert]"));
 
+        public YourVideos_FollowingPage SelectPrimaryCoachViaDropdown(string name)
+        {
+            driver.Sleep(1000);
+            PrimaryCoachDropdown.WaitUntil().Visible().Click();
+            driver.Sleep(1000);
+            CoachDropdownOption.WithParam(name).WaitUntil().Visible().Click();
+            return new YourVideos_FollowingPage();
+        }
+
+        public YourVideos_FollowingPage VerifyPrimaryCoachLabel(string name)
+        {
+            PrimaryCoachLabel.Verify().Text(name);
+            return this;
+        }
 
         public YourVideos_FollowingPage VerifyFollowing(string instructor)
         {

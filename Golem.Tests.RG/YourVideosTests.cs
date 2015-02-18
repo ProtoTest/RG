@@ -89,5 +89,19 @@ namespace Golem.Tests.RG
               Login(Users.User1.email, Users.User1.password).
               LoggedInHeader.EnterAccount_YourVideos().EnterFavorites().VerifyVideoOnPage("Create width in the backswing");
         }
+
+        [Test, Category("Your Videos Tests")]
+        public void PrimaryCoachTest()
+        {
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.EnterAccount_YourVideos()
+                .EnterFollowing()
+                .SelectPrimaryCoachViaDropdown("Bronson Wright")
+                .VerifyPrimaryCoachLabel("BRONSON WRIGHT")
+                .SelectPrimaryCoachViaDropdown("Sir Nick Faldo")
+                .VerifyPrimaryCoachLabel("SIR NICK FALDO");
+        }
     }
 }
