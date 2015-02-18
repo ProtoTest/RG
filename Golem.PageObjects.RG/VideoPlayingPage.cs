@@ -16,6 +16,11 @@ namespace Golem.PageObjects.RG
 {
     public class VideoPlayingPage : BasePageObject
     {
+        Element FirstCommentContainer = new Element("First Comment Container", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'comment-container')]"));
+        Element FirstCommentReplyButton = new Element("FirstCommentReplyButton", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'comment-container')]//a[text()='Reply']"));
+        Element ReplyActionContainer = new Element("Reply Action Container", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'reply-action-container')]/textarea"));
+        Element ReplyActionSubmit = new Element("Reply Action Submit Button", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'reply-action-container')]/div[contains(@class,'reply-actions')]/a[contains(@class,'btn-orange')]"));
+               
         public LoggedInHeader LoggedInHeader = new LoggedInHeader();
 
         Element Video = new Element("BrightCove video", By.XPath("//*[@id='video-container']//object"));
@@ -96,12 +101,14 @@ namespace Golem.PageObjects.RG
 
         public VideoPlayingPage ReplyToLatestComment(string comment_to_add)
         {
-            Element FirstCommentContainer = new Element("First Comment Container", By.XPath("//ul[@class='comments-list']/li[1]//*[contains(@class,'comment-container')]"));
-            IWebElement FirstCommentReplyButton = FirstCommentContainer.FindInChildren(By.XPath(".//a[text()='Reply']"));
+            for (int i = 0; i < 4; i++)
+            {
+                FirstCommentContainer.Verify().Visible().MouseOver();
+            }
 
-            FirstCommentContainer.Verify().Visible().MouseOver();
-            FirstCommentContainer.Click();
-            FirstCommentReplyButton.Verify().Visible().Click();
+            FirstCommentReplyButton.WaitUntil().Present().GetVisibleElement().Click();
+            ReplyActionContainer.WaitUntil().Present().GetVisibleElement().SendKeys(comment_to_add);
+            ReplyActionSubmit.WaitUntil().Present().GetVisibleElement().Click();
 
             return this;
         }

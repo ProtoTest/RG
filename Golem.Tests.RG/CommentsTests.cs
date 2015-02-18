@@ -31,27 +31,19 @@ namespace Golem.Tests.RG
                 VerifyLatestComment(display_name, comment_to_add);
         }
 
-        //[Test, Category("Comments Tests"), DependsOn("AddCommentToVideo")]
-        //public void ReplyToCommentOnVideo()
-        //{
-        //    string video_to_search_for = "TW-Video";
-        //    string comment_to_add = "Comment: " + Common.GetRandomString();
-        //    string display_name = Users.User1.email;
+        [Test, Category("Comments Tests"), DependsOn("AddCommentToVideo")]
+        public void ReplyToCommentOnVideo()
+        {
+            string video_to_search_for = "ticket";
+            string comment_to_add = "Comment: " + Common.GetRandomString();
+            string display_name = Users.User1.email;
 
-        //    // Search and navigate to first video
-        //    SearchResultsPage search_results_page = HomePage.OpenHomePage().
-        //       GotoLoginJoinPage().
-        //       Login(Users.User1.email, Users.User1.password).
-        //       LoggedInHeader.SearchFor(video_to_search_for);
-
-        //    // Store the first video and get its title
-        //    VideoDetails first_video = search_results_page.PopulateFeaturedVideosList().FeaturedVideos.First();
-        //    string video_name = first_video.Video_Title;
-
-        //    // Select the video, make a comment, verify the comment is there added
-        //    VideoPlayingPage video_playing_page = first_video.SelectVideo().
-        //        ReplyToLatestComment(comment_to_add).
-        //        VerifyReplyToLatestComment(display_name, comment_to_add);
-        //}
+            HomePage.OpenHomePage().
+                GotoLoginJoinPage().
+                Login(Users.User1.email, Users.User1.password).
+                LoggedInHeader.SearchFor(video_to_search_for).Videos.
+                OpenFirstVideo().ReplyToLatestComment(comment_to_add).
+                VerifyReplyToLatestComment(display_name, comment_to_add);            
+        }
     }
 }

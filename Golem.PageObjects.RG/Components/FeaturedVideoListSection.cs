@@ -25,6 +25,12 @@ namespace Golem.PageObjects.RG.Components
             return Videos.First();
         }
 
+        public Element FirstVideoSelect()
+        {
+            FirstVideo().Click();
+            return new Element();
+        }
+
         public VideoPlayingPage OpenFirstVideo()
         {
             Videos.FirstOrDefault().Click();
